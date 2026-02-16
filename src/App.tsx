@@ -371,10 +371,13 @@ export default function Portfolio() {
             <AnimatedSection delay={0.1}>
               <div className={`p-6 rounded-2xl border backdrop-blur-sm ${card}`}>
                 <p className={`${textSub} leading-relaxed text-sm`}>
-                  Versatile Full-Stack Engineer & Web3 Architect. I turn complex problems into shipping products. From AI-Agent OS to High-Frequency Trading Dashboards—I build scalable systems that bridge the gap between traditional web and decentralized technologies.
+                  I am a Versatile Full-Stack Engineer & Web3 Architect with a deep focus on <strong>Autonomous AI Agents</strong> and <strong>Multi-Chain DeFi Ecosystems</strong>.
                 </p>
                 <p className={`${textSub} leading-relaxed text-sm mt-4`}>
-                  I'm passionate about clean code, autonomous agents, and blockchain innovation. When I'm not coding, you'll find me exploring new DeFi protocols or contributing to the open-source community.
+                  My work spans from engineering **AI-driven Operating Systems** and **Financial Assistants** (like <em>agent.os</em> & <em>VibeAgent</em>) to architecting **Institutional Treasury Systems** and **RWA Financing Platforms** (like <em>StableFlow</em> & <em>CrediProcure</em>).
+                </p>
+                <p className={`${textSub} leading-relaxed text-sm mt-4`}>
+                  I specialize in merging **Artificial Intelligence** with **Blockchain Technology** across Solana, BNB Chain, and EVM networks to build systems that are not just functional, but revolutionary.
                 </p>
               </div>
             </AnimatedSection>
