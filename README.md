@@ -50,7 +50,7 @@ This portfolio highlights my most impactful work across **Web3, AI, and Full-Sta
 *   **[VibeAgent](https://github.com/panzauto46-bot/VibeAgent)**: AI-Powered Financial Assistant on BNB Chain (Android App).
 
 ### 🔗 Blockchain & Web3
-*   **[CrediProcure](https://github.com/panzauto46-bot/CrediProcure)**: Decentralized B2B Invoice Financing Platform on Creditcoin (RWA).
+*   **[CrediProcure](https://credi-procure.vercel.app/)**: Decentralized B2B Invoice Financing Platform on Creditcoin (RWA).
 *   **[CredPOS](https://github.com/panzauto46-bot/CredPOS)**: DeFi-Integrated Point of Sale with Multi-Chain Wallet Connect (Tezos/Sui).
 *   **[InstaDrop](https://instadrop402.vercel.app/)**: Instant Pay-to-Download Protocol built on the Stacks Blockchain.
 *   **[SatsProcure](https://sats-procure.vercel.app)**: Bitcoin inventory and procurement management system.
