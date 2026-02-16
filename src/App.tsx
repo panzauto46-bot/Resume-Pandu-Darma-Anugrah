@@ -587,7 +587,7 @@ export default function Portfolio() {
                     <div className={`p-5 rounded-2xl border backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 ${card} relative`}>
                       <div className={`absolute top-5 left-5 w-2 h-2 rounded-full ${accentBg}`} />
                       <div className="pl-5">
-                        <span className={`text-xs ${accent} font-medium`}>{exp.year}</span>
+
                         <h4 className="font-semibold text-sm mt-1">{exp.role}</h4>
                         <p className={`text-xs ${textSub} mt-0.5`}>{exp.company}</p>
                         <p className={`text-xs ${textSub} mt-2 leading-relaxed`}>{exp.desc}</p>
@@ -612,7 +612,7 @@ export default function Portfolio() {
                     <div className={`p-5 rounded-2xl border backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 ${card} relative`}>
                       <div className="absolute top-5 left-5 w-2 h-2 rounded-full bg-cyan-500" />
                       <div className="pl-5">
-                        <span className="text-xs text-cyan-400 font-medium">{edu.year}</span>
+
                         <h4 className="font-semibold text-sm mt-1">{edu.degree}</h4>
                         <p className={`text-xs ${textSub} mt-0.5`}>{edu.school}</p>
                         <p className={`text-xs ${textSub} mt-2 leading-relaxed`}>{edu.desc}</p>
