@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, ReactNode } from "react";
-import { Moon, Sun, Mail, MapPin, ExternalLink, Github, Linkedin, Twitter, ChevronDown, Code, Palette, Globe, Server, ArrowUp, Star, Calendar, Briefcase, GraduationCap, Award, Eye, Database } from "lucide-react";
+import { Moon, Sun, Mail, MapPin, ExternalLink, Github, Linkedin, Twitter, ChevronDown, Code, Palette, Globe, Server, ArrowUp, Briefcase, GraduationCap, Eye, Database } from "lucide-react";
 
 // Define interfaces for data structures
 interface Project {
