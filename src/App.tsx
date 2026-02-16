@@ -77,7 +77,7 @@ const projects: Project[] = [
     tags: ["TypeScript", "AI Agents", "LLM", "Automation"],
     image: "/agent-os.jpeg",
     color: "from-violet-500 to-purple-600",
-    link: "https://github.com/panzauto46-bot/agent.os",
+    link: "https://agent-os-id.vercel.app",
     github: "https://github.com/panzauto46-bot/agent.os",
   },
   {
@@ -86,7 +86,7 @@ const projects: Project[] = [
     tags: ["TypeScript", "Stacks", "Blockchain", "Web3"],
     image: "⚡",
     color: "from-orange-500 to-red-600",
-    link: "https://github.com/panzauto46-bot/InstaDrop402web",
+    link: "https://instadrop402.vercel.app/",
     github: "https://github.com/panzauto46-bot/InstaDrop402web",
   },
   {
@@ -95,7 +95,7 @@ const projects: Project[] = [
     tags: ["TypeScript", "AI", "Security", "Monitoring"],
     image: "🛡️",
     color: "from-cyan-500 to-blue-600",
-    link: "https://github.com/panzauto46-bot/AnchorGuard-AI",
+    link: "https://anchorguard-ai.vercel.app",
     github: "https://github.com/panzauto46-bot/AnchorGuard-AI",
   },
   {
@@ -104,7 +104,7 @@ const projects: Project[] = [
     tags: ["TypeScript", "Crypto", "Trading", "Analytics"],
     image: "📈",
     color: "from-emerald-500 to-green-600",
-    link: "https://github.com/panzauto46-bot/BIT-SHADOW",
+    link: "https://bit-shadow.vercel.app",
     github: "https://github.com/panzauto46-bot/BIT-SHADOW",
   },
   {
@@ -113,7 +113,7 @@ const projects: Project[] = [
     tags: ["TypeScript", "Bitcoin", "Procurement", "Inventory"],
     image: "₿",
     color: "from-amber-500 to-orange-600",
-    link: "https://github.com/panzauto46-bot/SatsProcure-atau-BtcInventory-",
+    link: "https://satsprocure-atau-btcinventory.vercel.app",
     github: "https://github.com/panzauto46-bot/SatsProcure-atau-BtcInventory-",
   },
   {
@@ -122,7 +122,7 @@ const projects: Project[] = [
     tags: ["TypeScript", "Solana", "Education", "Web3"],
     image: "🎓",
     color: "from-purple-500 to-indigo-600",
-    link: "https://github.com/panzauto46-bot/SolForge-Academy",
+    link: "https://solforge-academy.vercel.app",
     github: "https://github.com/panzauto46-bot/SolForge-Academy",
   },
 ];
