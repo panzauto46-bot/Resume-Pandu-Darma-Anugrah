@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, ReactNode } from "react";
-import { Moon, Sun, Mail, Phone, MapPin, ExternalLink, Github, Linkedin, Twitter, ChevronDown, Code, Palette, Globe, Server, ArrowUp, Star, Calendar, Briefcase, GraduationCap, Award, Eye } from "lucide-react";
+import { Moon, Sun, Mail, MapPin, ExternalLink, Github, Linkedin, Twitter, ChevronDown, Code, Palette, Globe, Server, ArrowUp, Star, Calendar, Briefcase, GraduationCap, Award, Eye, Database } from "lucide-react";
 
 // Define interfaces for data structures
 interface Project {
@@ -72,79 +72,78 @@ const AnimatedSection = ({ children, delay = 0, className = "" }: AnimatedSectio
 
 const projects: Project[] = [
   {
-    title: "E-Commerce Platform",
-    desc: "A full-stack e-commerce application with real-time inventory management, payment gateway integration, and admin dashboard.",
-    tags: ["React", "Node.js", "MongoDB", "Stripe"],
-    image: "🛒",
-    color: "from-violet-500 to-purple-600",
-    link: "#",
-    github: "#",
-  },
-  {
-    title: "AI Chat Application",
-    desc: "Real-time messaging app powered by AI with smart replies, sentiment analysis, and multi-language translation support.",
-    tags: ["Next.js", "OpenAI", "Socket.io", "Redis"],
+    title: "agent.os",
+    desc: "An autonomous AI Agent Operating System designed for complex task execution and orchestration.",
+    tags: ["TypeScript", "AI Agents", "LLM", "Automation"],
     image: "🤖",
+    color: "from-violet-500 to-purple-600",
+    link: "https://github.com/panzauto46-bot/agent.os",
+    github: "https://github.com/panzauto46-bot/agent.os",
+  },
+  {
+    title: "InstaDrop",
+    desc: "Instant Pay-to-Download Protocol built on the Stacks Blockchain, enabling seamless digital asset monetization.",
+    tags: ["TypeScript", "Stacks", "Blockchain", "Web3"],
+    image: "⚡",
+    color: "from-orange-500 to-red-600",
+    link: "https://github.com/panzauto46-bot/InstaDrop402web",
+    github: "https://github.com/panzauto46-bot/InstaDrop402web",
+  },
+  {
+    title: "AnchorGuard AI",
+    desc: "Advanced AI-powered security and monitoring solution for protecting digital assets and infrastructure.",
+    tags: ["TypeScript", "AI", "Security", "Monitoring"],
+    image: "🛡️",
     color: "from-cyan-500 to-blue-600",
-    link: "#",
-    github: "#",
+    link: "https://github.com/panzauto46-bot/AnchorGuard-AI",
+    github: "https://github.com/panzauto46-bot/AnchorGuard-AI",
   },
   {
-    title: "Finance Dashboard",
-    desc: "Interactive financial analytics dashboard with data visualization, budget tracking, and predictive forecasting models.",
-    tags: ["React", "D3.js", "Python", "PostgreSQL"],
-    image: "📊",
+    title: "BIT-SHADOW",
+    desc: "High-frequency crypto trading dashboard and analytics platform for real-time market insights.",
+    tags: ["TypeScript", "Crypto", "Trading", "Analytics"],
+    image: "📈",
     color: "from-emerald-500 to-green-600",
-    link: "#",
-    github: "#",
+    link: "https://github.com/panzauto46-bot/BIT-SHADOW",
+    github: "https://github.com/panzauto46-bot/BIT-SHADOW",
   },
   {
-    title: "Social Media App",
-    desc: "Feature-rich social platform with stories, reels, real-time notifications, and recommendation algorithm.",
-    tags: ["React Native", "Firebase", "GraphQL", "AWS"],
-    image: "📱",
-    color: "from-pink-500 to-rose-600",
-    link: "#",
-    github: "#",
-  },
-  {
-    title: "Task Management Tool",
-    desc: "Kanban-style project management tool with team collaboration, time tracking, and automated workflow features.",
-    tags: ["Vue.js", "Express", "MySQL", "Docker"],
-    image: "📋",
+    title: "SatsProcure",
+    desc: "Bitcoin inventory and procurement management system aimed at streamlining detailed satinvoicing.",
+    tags: ["TypeScript", "Bitcoin", "Procurement", "Inventory"],
+    image: "₿",
     color: "from-amber-500 to-orange-600",
-    link: "#",
-    github: "#",
+    link: "https://github.com/panzauto46-bot/SatsProcure-atau-BtcInventory-",
+    github: "https://github.com/panzauto46-bot/SatsProcure-atau-BtcInventory-",
   },
   {
-    title: "Weather Forecast App",
-    desc: "Beautiful weather application with animated backgrounds, 7-day forecast, and location-based alerts system.",
-    tags: ["React", "TypeScript", "REST API", "PWA"],
-    image: "🌤️",
-    color: "from-sky-500 to-indigo-600",
-    link: "#",
-    github: "#",
+    title: "SolForge Academy",
+    desc: "Educational platform and resource hub for Solana blockchain development and smart contract engineering.",
+    tags: ["TypeScript", "Solana", "Education", "Web3"],
+    image: "🎓",
+    color: "from-purple-500 to-indigo-600",
+    link: "https://github.com/panzauto46-bot/SolForge-Academy",
+    github: "https://github.com/panzauto46-bot/SolForge-Academy",
   },
 ];
 
 const skills: Skill[] = [
-  { name: "React / Next.js", level: 95, icon: <Code size={16} /> },
-  { name: "TypeScript", level: 90, icon: <Code size={16} /> },
-  { name: "Node.js / Express", level: 88, icon: <Server size={16} /> },
-  { name: "UI/UX Design", level: 85, icon: <Palette size={16} /> },
-  { name: "Python / Django", level: 82, icon: <Code size={16} /> },
-  { name: "DevOps / AWS", level: 78, icon: <Globe size={16} /> },
+  { name: "TypeScript / JavaScript", level: 95, icon: <Code size={16} /> },
+  { name: "React / Next.js", level: 90, icon: <Code size={16} /> },
+  { name: "Web3 / Blockchain", level: 92, icon: <Globe size={16} /> },
+  { name: "AI / LLM Integration", level: 88, icon: <Server size={16} /> },
+  { name: "Solana / Stacks", level: 85, icon: <Database size={16} /> },
+  { name: "System Architecture", level: 85, icon: <Palette size={16} /> },
 ];
 
 const experiences: Experience[] = [
-  { year: "2024 — Present", role: "Senior Frontend Engineer", company: "Tech Corp Inc.", desc: "Leading the frontend architecture team, building scalable design systems and mentoring junior developers." },
-  { year: "2022 — 2024", role: "Full Stack Developer", company: "Digital Agency Co.", desc: "Developed 20+ client projects including e-commerce platforms, dashboards, and mobile applications." },
-  { year: "2020 — 2022", role: "Junior Web Developer", company: "StartUp Hub", desc: "Built responsive web applications and contributed to open-source projects with 500+ GitHub stars." },
+  { year: "2024 — Present", role: "Web3 Architect & AI Engineer", company: "Freelance / Open Source", desc: "Building next-gen AI agent operating systems and decentralized protocols on Stacks and Solana." },
+  { year: "2023 — 2024", role: "Full Stack Developer", company: "Tech Projects", desc: "Developed high-frequency trading dashboards and secure inventory management systems for crypto assets." },
+  { year: "2022 — 2023", role: "Frontend Developer", company: "Digital Solutions", desc: "Specialized in building responsive, interactive user interfaces for various web applications." },
 ];
 
 const education: Education[] = [
-  { year: "2016 — 2020", degree: "B.Sc. Computer Science", school: "University of Technology", desc: "Graduated with honors. Focus on Software Engineering and Human-Computer Interaction." },
-  { year: "2020", degree: "Full Stack Certification", school: "freeCodeCamp", desc: "Completed 1,200+ hours of coursework in web development, APIs, and microservices." },
+  { year: "2026", degree: "Continuous Learning", school: "Open Source Community", desc: "Active contributor and builder in the Web3 and AI space, constantly mastering new technologies." },
 ];
 
 export default function Portfolio() {
@@ -273,7 +272,7 @@ export default function Portfolio() {
 
           <AnimatedSection delay={0.45}>
             <p className={`text-lg md:text-xl ${textSub} max-w-xl mx-auto mb-8 leading-relaxed`}>
-              Creative Full Stack Developer crafting beautiful, performant, and user-centric digital experiences.
+              Versatile Full-Stack Engineer & Web3 Architect. I turn complex problems into shipping products.
             </p>
           </AnimatedSection>
 
@@ -321,10 +320,10 @@ export default function Portfolio() {
             <AnimatedSection delay={0.1}>
               <div className={`p-6 rounded-2xl border backdrop-blur-sm ${card}`}>
                 <p className={`${textSub} leading-relaxed text-sm`}>
-                  With over <strong className={text}>5 years</strong> of experience in web development, I specialize in building modern, scalable applications that combine elegant design with robust functionality.
+                  Versatile Full-Stack Engineer & Web3 Architect. I turn complex problems into shipping products. From AI-Agent OS to High-Frequency Trading Dashboards—I build scalable systems that bridge the gap between traditional web and decentralized technologies.
                 </p>
                 <p className={`${textSub} leading-relaxed text-sm mt-4`}>
-                  I'm passionate about clean code, pixel-perfect UI, and creating seamless user experiences. When I'm not coding, you'll find me exploring new technologies, contributing to open source, or sipping coffee at a local café.
+                  I'm passionate about clean code, autonomous agents, and blockchain innovation. When I'm not coding, you'll find me exploring new DeFi protocols or contributing to the open-source community.
                 </p>
               </div>
             </AnimatedSection>
@@ -573,9 +572,9 @@ export default function Portfolio() {
           <AnimatedSection delay={0.1}>
             <div className="flex flex-wrap justify-center gap-4 mb-10">
               {[
-                { icon: <Mail size={16} />, label: "alex@example.com", color: "violet" },
-                { icon: <Phone size={16} />, label: "+1 (555) 123-4567", color: "cyan" },
-                { icon: <MapPin size={16} />, label: "San Francisco, CA", color: "pink" },
+                { icon: <Mail size={16} />, label: "panzauto46@gmail.com", color: "violet" },
+                { icon: <Github size={16} />, label: "panzauto46-bot", color: "cyan" },
+                { icon: <MapPin size={16} />, label: "Indonesia", color: "pink" },
               ].map((item, i) => (
                 <div key={i} className={`flex items-center gap-2 px-4 py-2.5 rounded-full border text-sm ${card} transition-all hover:-translate-y-0.5`}>
                   <span className={accent}>{item.icon}</span>
@@ -600,7 +599,7 @@ export default function Portfolio() {
                   <label className={`text-xs font-medium ${textSub} mb-1.5 block`}>Email Address</label>
                   <input
                     type="email"
-                    placeholder="john@example.com"
+                    placeholder="panzauto46@gmail.com"
                     className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 ${dark ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500" : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400"}`}
                   />
                 </div>
