@@ -47,7 +47,7 @@ This portfolio highlights my most impactful work across **Web3, AI, and Full-Sta
 ### 🤖 AI & Automation
 *   **[agent.os](https://agent-os-id.vercel.app)**: An autonomous AI Agent Operating System designed for complex task execution and orchestration.
 *   **[AnchorGuard AI](https://anchor-guard-ai.vercel.app/)**: Advanced AI-powered security and monitoring solution for protecting digital assets.
-*   **[VibeAgent](https://github.com/panzauto46-bot/VibeAgent)**: AI-Powered Financial Assistant on BNB Chain (Android App).
+*   **[VibeAgent](https://vibeagentweb.vercel.app/)**: AI-Powered Financial Assistant on BNB Chain (Android App).
 
 ### 🔗 Blockchain & Web3
 *   **[CrediProcure](https://credi-procure.vercel.app/)**: Decentralized B2B Invoice Financing Platform on Creditcoin (RWA).

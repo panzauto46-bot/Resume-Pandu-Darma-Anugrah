@@ -166,9 +166,9 @@ const projects: Project[] = [
     title: "VibeAgent",
     desc: "AI-Powered Financial Assistant on BNB Chain (Android App).",
     tags: ["Kotlin", "Android", "AI", "BNB Chain"],
-    image: "/vibe-agent.png",
+    image: "/vibe-agent.jpeg",
     color: "from-yellow-400 to-orange-500",
-    link: "https://github.com/panzauto46-bot/VibeAgent",
+    link: "https://vibeagentweb.vercel.app/",
     github: "https://github.com/panzauto46-bot/VibeAgent",
   },
 
