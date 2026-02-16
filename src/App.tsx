@@ -161,15 +161,7 @@ const projects: Project[] = [
     link: "https://stableflowweb.vercel.app/",
     github: "https://github.com/panzauto46-bot/StableFlow",
   },
-  {
-    title: "StableFlowWeb",
-    desc: "Official Landing Page for StableFlow Treasury System.",
-    tags: ["HTML", "GSAP", "Landing Page"],
-    image: "🌐",
-    color: "from-blue-300 to-cyan-400",
-    link: "https://github.com/panzauto46-bot/StableFlowWeb",
-    github: "https://github.com/panzauto46-bot/StableFlowWeb",
-  },
+
   {
     title: "VibeAgent",
     desc: "AI-Powered Financial Assistant on BNB Chain (Android App).",
@@ -179,24 +171,7 @@ const projects: Project[] = [
     link: "https://github.com/panzauto46-bot/VibeAgent",
     github: "https://github.com/panzauto46-bot/VibeAgent",
   },
-  {
-    title: "VibeAgentWEB",
-    desc: "Official Landing Page for VibeAgent AI Assistant.",
-    tags: ["HTML", "CSS", "Landing Page"],
-    image: "🌐",
-    color: "from-yellow-200 to-orange-300",
-    link: "https://github.com/panzauto46-bot/VibeAgentWEB",
-    github: "https://github.com/panzauto46-bot/VibeAgentWEB",
-  },
-  {
-    title: "INPUT-DATA-LAPORAN-KERJA",
-    desc: "Web application for managing work report data input.",
-    tags: ["PHP", "MySQL", "Web", "Management"],
-    image: "📝",
-    color: "from-gray-500 to-gray-700",
-    link: "https://github.com/panzauto46-bot/INPUT-DATA-LAPORAN-KERJA",
-    github: "https://github.com/panzauto46-bot/INPUT-DATA-LAPORAN-KERJA",
-  },
+
 ];
 
 const skills: Skill[] = [
