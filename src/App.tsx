@@ -95,7 +95,7 @@ const projects: Project[] = [
     tags: ["TypeScript", "AI", "Security", "Monitoring"],
     image: "/anchorguard-ai.jpeg",
     color: "from-cyan-500 to-blue-600",
-    link: "https://anchorguard-ai.vercel.app",
+    link: "https://anchor-guard-ai.vercel.app/",
     github: "https://github.com/panzauto46-bot/AnchorGuard-AI",
   },
   {
