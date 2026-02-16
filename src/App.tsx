@@ -95,7 +95,7 @@ const projects: Project[] = [
     tags: ["TypeScript", "AI", "Security", "Monitoring"],
     image: "/anchorguard-ai.jpeg",
     color: "from-cyan-500 to-blue-600",
-    link: "https://anchorguard-ai.vercel.app",
+    link: "https://github.com/panzauto46-bot/AnchorGuard-AI",
     github: "https://github.com/panzauto46-bot/AnchorGuard-AI",
   },
   {
@@ -113,7 +113,7 @@ const projects: Project[] = [
     tags: ["TypeScript", "Bitcoin", "Procurement", "Inventory"],
     image: "/satsprocure.jpeg",
     color: "from-amber-500 to-orange-600",
-    link: "https://satsprocure-atau-btcinventory.vercel.app",
+    link: "https://github.com/panzauto46-bot/SatsProcure-atau-BtcInventory-",
     github: "https://github.com/panzauto46-bot/SatsProcure-atau-BtcInventory-",
   },
   {
