@@ -131,7 +131,7 @@ const projects: Project[] = [
     tags: ["Solidity", "React", "Creditcoin", "RWA"],
     image: "🏢",
     color: "from-blue-500 to-indigo-600",
-    link: "https://github.com/panzauto46-bot/CrediProcure",
+    link: "https://credi-procure.vercel.app/",
     github: "https://github.com/panzauto46-bot/CrediProcure",
   },
   {
