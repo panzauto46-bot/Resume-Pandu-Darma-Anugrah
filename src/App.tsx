@@ -147,9 +147,9 @@ const projects: Project[] = [
     title: "Trading Analytics Dashboard",
     desc: "AI-Driven Trading Insights & Consistency Heatmap.",
     tags: ["Next.js", "AI", "Trading", "Analytics"],
-    image: "📊",
+    image: "/trading-analytics.jpeg",
     color: "from-gray-700 to-gray-900",
-    link: "https://github.com/panzauto46-bot/Trading-Analytics-Dashboard",
+    link: "https://trading-analytics-dashboard-chi.vercel.app/",
     github: "https://github.com/panzauto46-bot/Trading-Analytics-Dashboard",
   },
   {

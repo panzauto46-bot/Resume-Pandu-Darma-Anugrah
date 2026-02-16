@@ -56,7 +56,7 @@ This portfolio highlights my most impactful work across **Web3, AI, and Full-Sta
 *   **[SatsProcure](https://sats-procure.vercel.app)**: Bitcoin inventory and procurement management system.
 
 ### 📊 Fintech & Analytics
-*   **[Trading Analytics Dashboard](https://github.com/panzauto46-bot/Trading-Analytics-Dashboard)**: AI-Driven Trading Insights & Consistency Heatmap.
+*   **[Trading Analytics Dashboard](https://trading-analytics-dashboard-chi.vercel.app/)**: AI-Driven Trading Insights & Consistency Heatmap.
 *   **[StableFlow](https://github.com/panzauto46-bot/StableFlow)**: Institutional Treasury & Expense Management System on Solana.
 *   **[BIT-SHADOW](https://bit-shadow.vercel.app)**: High-frequency crypto trading dashboard for real-time insights.
 
