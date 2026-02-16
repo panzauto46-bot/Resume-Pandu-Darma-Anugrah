@@ -289,8 +289,12 @@ export default function Portfolio() {
 
           <AnimatedSection delay={0.75}>
             <div className="flex items-center justify-center gap-4">
-              {[Github, Linkedin, Twitter].map((Icon, i) => (
-                <a key={i} href="#" className={`p-3 rounded-full border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${dark ? "border-gray-800 bg-gray-900/50 hover:border-violet-500 hover:shadow-violet-500/10" : "border-gray-200 bg-white hover:border-violet-400 hover:shadow-violet-500/10"}`}>
+              {[
+                { Icon: Github, href: "https://github.com/panzauto46-bot" },
+                { Icon: Linkedin, href: "https://www.linkedin.com/in/pandu-darma-195a621b2/" },
+                { Icon: Twitter, href: "https://x.com/BTC_SEANA" }
+              ].map(({ Icon, href }, i) => (
+                <a key={i} href={href} target="_blank" rel="noopener noreferrer" className={`p-3 rounded-full border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${dark ? "border-gray-800 bg-gray-900/50 hover:border-violet-500 hover:shadow-violet-500/10" : "border-gray-200 bg-white hover:border-violet-400 hover:shadow-violet-500/10"}`}>
                   <Icon size={18} />
                 </a>
               ))}
@@ -633,8 +637,12 @@ export default function Portfolio() {
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <p className={`text-xs ${textSub}`}>© 2026 Pandu Darma Anugrah. Crafted with ❤️ and lots of ☕</p>
           <div className="flex items-center gap-3">
-            {[Github, Linkedin, Twitter].map((Icon, i) => (
-              <a key={i} href="#" className={`${textSub} hover:text-violet-400 transition-colors`}>
+            {[
+              { Icon: Github, href: "https://github.com/panzauto46-bot" },
+              { Icon: Linkedin, href: "https://www.linkedin.com/in/pandu-darma-195a621b2/" },
+              { Icon: Twitter, href: "https://x.com/BTC_SEANA" }
+            ].map(({ Icon, href }, i) => (
+              <a key={i} href={href} target="_blank" rel="noopener noreferrer" className={`${textSub} hover:text-violet-400 transition-colors`}>
                 <Icon size={16} />
               </a>
             ))}
