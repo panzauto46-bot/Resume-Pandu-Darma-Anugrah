@@ -199,8 +199,8 @@ export default function Portfolio() {
             key={item}
             onClick={() => scrollTo(item)}
             className={`px-3 py-1.5 rounded-full text-xs font-medium capitalize transition-all duration-300 ${activeSection === item
-                ? `${accentBg} text-white shadow-lg shadow-violet-500/25`
-                : `${textSub} hover:text-violet-400`
+              ? `${accentBg} text-white shadow-lg shadow-violet-500/25`
+              : `${textSub} hover:text-violet-400`
               }`}
           >
             {item}
@@ -266,7 +266,7 @@ export default function Portfolio() {
             <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
               Hi, I'm{" "}
               <span className="bg-gradient-to-r from-violet-400 via-cyan-400 to-pink-400 bg-clip-text text-transparent">
-                Alex Morgan
+                Pandu Darma Anugrah
               </span>
             </h1>
           </AnimatedSection>
@@ -632,7 +632,7 @@ export default function Portfolio() {
       {/* Footer */}
       <footer className={`py-8 px-6 border-t ${dark ? "border-gray-800" : "border-gray-200"}`}>
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className={`text-xs ${textSub}`}>© 2026 Alex Morgan. Crafted with ❤️ and lots of ☕</p>
+          <p className={`text-xs ${textSub}`}>© 2026 Pandu Darma Anugrah. Crafted with ❤️ and lots of ☕</p>
           <div className="flex items-center gap-3">
             {[Github, Linkedin, Twitter].map((Icon, i) => (
               <a key={i} href="#" className={`${textSub} hover:text-violet-400 transition-colors`}>
