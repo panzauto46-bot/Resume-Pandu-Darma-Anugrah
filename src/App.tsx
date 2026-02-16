@@ -175,12 +175,12 @@ const projects: Project[] = [
 ];
 
 const skills: Skill[] = [
-  { name: "TypeScript / JavaScript", level: 95, icon: <Code size={16} /> },
-  { name: "React / Next.js", level: 90, icon: <Code size={16} /> },
-  { name: "Web3 / Blockchain", level: 92, icon: <Globe size={16} /> },
-  { name: "AI / LLM Integration", level: 88, icon: <Server size={16} /> },
-  { name: "Solana / Stacks", level: 85, icon: <Database size={16} /> },
-  { name: "System Architecture", level: 85, icon: <Palette size={16} /> },
+  { name: "AI Agents & LLM (Groq, DeepSeek)", level: 95, icon: <Server size={16} /> },
+  { name: "Multi-Chain Web3 (Solana, Stacks, BNB)", level: 92, icon: <Globe size={16} /> },
+  { name: "Full-Stack (React, Next.js, Node.js)", level: 90, icon: <Code size={16} /> },
+  { name: "Mobile Development (Kotlin, Android)", level: 88, icon: <Database size={16} /> }, // Using Database icon as placeholder for mobile/storage
+  { name: "Smart Contracts (Solidity, Clarity, Rust)", level: 85, icon: <Code size={16} /> },
+  { name: "RWA & Fintech Architecture", level: 88, icon: <Palette size={16} /> },
 ];
 
 const experiences: Experience[] = [
