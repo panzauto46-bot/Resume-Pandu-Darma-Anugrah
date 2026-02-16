@@ -1,8 +1,18 @@
 # Pandu Darma Anugrah - Portfolio
 
-A modern, responsive portfolio website built with **React**, **TypeScript**, **Vite**, and **Tailwind CSS**.
+**Versatile Full-Stack Engineer & Web3 Architect.**  
+I turn complex problems into shipping products. From AI-Agent OS to High-Frequency Trading Dashboards—I build scalable systems that bridge the gap between traditional web and decentralized technologies.
 
-This project showcases my work as a Versatile Full-Stack Engineer & Web3 Architect, featuring my pinned GitHub projects and professional background.
+This project showcases my work, featuring my pinned GitHub projects and professional background.
+
+## 🚀 Featured Projects
+
+-   **[agent.os](https://github.com/panzauto46-bot/agent.os)**: An autonomous AI Agent Operating System designed for complex task execution and orchestration.
+-   **[InstaDrop](https://github.com/panzauto46-bot/InstaDrop402web)**: Instant Pay-to-Download Protocol built on the Stacks Blockchain.
+-   **[AnchorGuard AI](https://github.com/panzauto46-bot/AnchorGuard-AI)**: Advanced AI-powered security and monitoring solution.
+-   **[BIT-SHADOW](https://github.com/panzauto46-bot/BIT-SHADOW)**: High-frequency crypto trading dashboard and analytics platform.
+-   **[SatsProcure](https://github.com/panzauto46-bot/SatsProcure-atau-BtcInventory-)**: Bitcoin inventory and procurement management system.
+-   **[SolForge Academy](https://github.com/panzauto46-bot/SolForge-Academy)**: Educational platform for Solana blockchain development.
 
 ## 🚀 Technologies
 
