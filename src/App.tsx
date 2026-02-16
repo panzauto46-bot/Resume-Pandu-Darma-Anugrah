@@ -75,7 +75,7 @@ const projects: Project[] = [
     title: "agent.os",
     desc: "An autonomous AI Agent Operating System designed for complex task execution and orchestration.",
     tags: ["TypeScript", "AI Agents", "LLM", "Automation"],
-    image: "🤖",
+    image: "/agent-os.png",
     color: "from-violet-500 to-purple-600",
     link: "https://github.com/panzauto46-bot/agent.os",
     github: "https://github.com/panzauto46-bot/agent.os",
@@ -415,7 +415,15 @@ export default function Portfolio() {
                 >
                   <div className={`h-40 bg-gradient-to-br ${project.color} flex items-center justify-center text-5xl relative overflow-hidden`}>
                     <div className="absolute inset-0 bg-black/10" />
-                    <span className="relative z-10 group-hover:scale-125 transition-transform duration-500">{project.image}</span>
+                    {(project.image.startsWith("/") || project.image.startsWith("http")) ? (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    ) : (
+                      <span className="relative z-10 group-hover:scale-125 transition-transform duration-500">{project.image}</span>
+                    )}
                     {/* Overlay buttons */}
                     <div className="absolute inset-0 bg-black/60 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
                       <button
@@ -465,7 +473,15 @@ export default function Portfolio() {
           >
             <div className={`h-52 bg-gradient-to-br ${previewProject.color} flex items-center justify-center text-7xl relative`}>
               <div className="absolute inset-0 bg-black/10" />
-              <span className="relative z-10">{previewProject.image}</span>
+              {(previewProject.image.startsWith("/") || previewProject.image.startsWith("http")) ? (
+                <img
+                  src={previewProject.image}
+                  alt={previewProject.title}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <span className="relative z-10">{previewProject.image}</span>
+              )}
               <button
                 onClick={() => setPreviewProject(null)}
                 className="absolute top-4 right-4 w-8 h-8 bg-black/30 backdrop-blur-sm text-white rounded-full flex items-center justify-center text-sm hover:bg-black/50 transition-colors"
