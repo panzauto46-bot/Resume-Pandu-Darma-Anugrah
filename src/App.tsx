@@ -576,7 +576,7 @@ export default function Portfolio() {
           <AnimatedSection delay={0.1}>
             <div className="flex flex-wrap justify-center gap-4 mb-10">
               {[
-                { icon: <Mail size={16} />, label: "panzauto46@gmail.com", color: "violet" },
+                { icon: <Mail size={16} />, label: "pandudargah202@gmail.com", color: "violet" },
                 { icon: <Github size={16} />, label: "panzauto46-bot", color: "cyan" },
                 { icon: <MapPin size={16} />, label: "Indonesia", color: "pink" },
               ].map((item, i) => (
@@ -589,12 +589,22 @@ export default function Portfolio() {
           </AnimatedSection>
 
           <AnimatedSection delay={0.2}>
-            <div className={`p-8 rounded-3xl border backdrop-blur-sm ${card}`}>
+            <form
+              action="https://formsubmit.co/pandudargah202@gmail.com"
+              method="POST"
+              className={`p-8 rounded-3xl border backdrop-blur-sm ${card}`}
+            >
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_subject" value="New submission from Portfolio!" />
+              <input type="hidden" name="_template" value="table" />
+
               <div className="grid md:grid-cols-2 gap-4 mb-4">
                 <div>
                   <label className={`text-xs font-medium ${textSub} mb-1.5 block`}>Full Name</label>
                   <input
                     type="text"
+                    name="name"
+                    required
                     placeholder="John Doe"
                     className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 ${dark ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500" : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400"}`}
                   />
@@ -603,7 +613,9 @@ export default function Portfolio() {
                   <label className={`text-xs font-medium ${textSub} mb-1.5 block`}>Email Address</label>
                   <input
                     type="email"
-                    placeholder="panzauto46@gmail.com"
+                    name="email"
+                    required
+                    placeholder="john@example.com"
                     className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 ${dark ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500" : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400"}`}
                   />
                 </div>
@@ -612,6 +624,8 @@ export default function Portfolio() {
                 <label className={`text-xs font-medium ${textSub} mb-1.5 block`}>Subject</label>
                 <input
                   type="text"
+                  name="subject"
+                  required
                   placeholder="Project Discussion"
                   className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 ${dark ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500" : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400"}`}
                 />
@@ -620,14 +634,16 @@ export default function Portfolio() {
                 <label className={`text-xs font-medium ${textSub} mb-1.5 block`}>Message</label>
                 <textarea
                   rows={4}
+                  name="message"
+                  required
                   placeholder="Tell me about your project..."
                   className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 resize-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 ${dark ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500" : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400"}`}
                 />
               </div>
-              <button className={`w-full ${accentBg} text-white py-3.5 rounded-xl font-medium text-sm hover:shadow-lg hover:shadow-violet-500/30 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0`}>
+              <button type="submit" className={`w-full ${accentBg} text-white py-3.5 rounded-xl font-medium text-sm hover:shadow-lg hover:shadow-violet-500/30 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0`}>
                 Send Message ✉️
               </button>
-            </div>
+            </form>
           </AnimatedSection>
         </div>
       </section>
