@@ -381,352 +381,351 @@ export default function Portfolio() {
             </div>
           </AnimatedSection>
         </div>
-    </div>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="py-24 px-6">
+        <div className="max-w-4xl mx-auto">
+          <AnimatedSection>
+            <div className="text-center mb-16">
+              <span className={`text-xs font-medium uppercase tracking-widest ${accent}`}>My Skills</span>
+              <h2 className="text-3xl md:text-4xl font-bold mt-2">Technologies I Work With</h2>
+            </div>
+          </AnimatedSection>
+
+          <div className="grid gap-4">
+            {skills.map((skill, i) => (
+              <AnimatedSection key={i} delay={i * 0.08}>
+                <div className={`p-4 rounded-2xl border backdrop-blur-sm ${card} transition-all duration-300 hover:-translate-y-0.5`}>
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className={`p-2 rounded-lg ${dark ? "bg-violet-500/10 text-violet-400" : "bg-violet-50 text-violet-600"}`}>
+                        {skill.icon}
+                      </div>
+                      <span className="font-medium text-sm">{skill.name}</span>
+                    </div>
+                    <span className={`text-xs font-semibold ${accent}`}>{skill.level}%</span>
+                  </div>
+                  <div className={`h-1.5 rounded-full ${dark ? "bg-gray-800" : "bg-gray-100"} overflow-hidden`}>
+                    <div
+                      className="h-full rounded-full bg-gradient-to-r from-violet-500 to-cyan-500"
+                      style={{
+                        width: `${skill.level}%`,
+                        transition: "width 1.5s cubic-bezier(0.16, 1, 0.3, 1)",
+                      }}
+                    />
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
       </section >
 
-    {/* Skills Section */ }
-    < section id = "skills" className = "py-24 px-6" >
-      <div className="max-w-4xl mx-auto">
-        <AnimatedSection>
-          <div className="text-center mb-16">
-            <span className={`text-xs font-medium uppercase tracking-widest ${accent}`}>My Skills</span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-2">Technologies I Work With</h2>
-          </div>
-        </AnimatedSection>
+      {/* Projects Section */}
+      < section id="projects" className="py-24 px-6" >
+        <div className="max-w-5xl mx-auto">
+          <AnimatedSection>
+            <div className="text-center mb-16">
+              <span className={`text-xs font-medium uppercase tracking-widest ${accent}`}>Portfolio</span>
+              <h2 className="text-3xl md:text-4xl font-bold mt-2">Featured Projects</h2>
+              <p className={`${textSub} mt-3 text-sm max-w-lg mx-auto`}>
+                A curated selection of projects showcasing my expertise in design, development, and problem-solving.
+              </p>
+            </div>
+          </AnimatedSection>
 
-        <div className="grid gap-4">
-          {skills.map((skill, i) => (
-            <AnimatedSection key={i} delay={i * 0.08}>
-              <div className={`p-4 rounded-2xl border backdrop-blur-sm ${card} transition-all duration-300 hover:-translate-y-0.5`}>
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg ${dark ? "bg-violet-500/10 text-violet-400" : "bg-violet-50 text-violet-600"}`}>
-                      {skill.icon}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project, i) => (
+              <AnimatedSection key={i} delay={i * 0.1}>
+                <div
+                  className={`group rounded-2xl border overflow-hidden backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${card} ${hoveredProject === i ? (dark ? "shadow-violet-500/10 border-violet-500/30" : "shadow-violet-500/15 border-violet-300") : ""
+                    }`}
+                  onMouseEnter={() => setHoveredProject(i)}
+                  onMouseLeave={() => setHoveredProject(null)}
+                >
+                  <div className={`h-40 bg-gradient-to-br ${project.color} flex items-center justify-center text-5xl relative overflow-hidden`}>
+                    <div className="absolute inset-0 bg-black/10" />
+                    {(project.image.startsWith("/") || project.image.startsWith("http")) ? (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    ) : (
+                      <span className="relative z-10 group-hover:scale-125 transition-transform duration-500">{project.image}</span>
+                    )}
+                    {/* Overlay buttons */}
+                    <div className="absolute inset-0 z-20 bg-black/60 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                      <button
+                        onClick={() => setPreviewProject(project)}
+                        className="p-2.5 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors text-white"
+                      >
+                        <Eye size={16} />
+                      </button>
+                      <a href={project.github} className="p-2.5 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors text-white">
+                        <Github size={16} />
+                      </a>
+                      <a href={project.link} className="p-2.5 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors text-white">
+                        <ExternalLink size={16} />
+                      </a>
                     </div>
-                    <span className="font-medium text-sm">{skill.name}</span>
                   </div>
-                  <span className={`text-xs font-semibold ${accent}`}>{skill.level}%</span>
+                  <div className="p-5">
+                    <h3 className="font-semibold text-base mb-2">{project.title}</h3>
+                    <p className={`text-xs ${textSub} leading-relaxed mb-4`}>{project.desc}</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.tags.map((tag, j) => (
+                        <span key={j} className={`text-xs px-2.5 py-1 rounded-full font-medium ${dark ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-gray-600"}`}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <div className={`h-1.5 rounded-full ${dark ? "bg-gray-800" : "bg-gray-100"} overflow-hidden`}>
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-violet-500 to-cyan-500"
-                    style={{
-                      width: `${skill.level}%`,
-                      transition: "width 1.5s cubic-bezier(0.16, 1, 0.3, 1)",
-                    }}
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section >
+
+      {/* Project Preview Modal */}
+      {
+        previewProject && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-6"
+            style={{ animation: "fadeIn 0.3s ease" }}
+            onClick={() => setPreviewProject(null)}
+          >
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+            <div
+              className={`relative w-full max-w-2xl rounded-3xl border overflow-hidden ${card}`}
+              style={{ animation: "zoomIn 0.4s cubic-bezier(0.16, 1, 0.3, 1)" }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className={`h-52 bg-gradient-to-br ${previewProject.color} flex items-center justify-center text-7xl relative`}>
+                <div className="absolute inset-0 bg-black/10" />
+                {(previewProject.image.startsWith("/") || previewProject.image.startsWith("http")) ? (
+                  <img
+                    src={previewProject.image}
+                    alt={previewProject.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <span className="relative z-10">{previewProject.image}</span>
+                )}
+                <button
+                  onClick={() => setPreviewProject(null)}
+                  className="absolute top-4 right-4 w-8 h-8 bg-black/30 backdrop-blur-sm text-white rounded-full flex items-center justify-center text-sm hover:bg-black/50 transition-colors"
+                >
+                  ✕
+                </button>
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-3">{previewProject.title}</h3>
+                <p className={`${textSub} leading-relaxed text-sm mb-6`}>{previewProject.desc}</p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {previewProject.tags.map((tag, j) => (
+                    <span key={j} className={`text-xs px-3 py-1.5 rounded-full font-medium ${dark ? "bg-violet-500/10 text-violet-300 border border-violet-500/20" : "bg-violet-50 text-violet-600 border border-violet-200"}`}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex gap-3">
+                  <a href={previewProject.link} className={`${accentBg} text-white px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-violet-500/30 transition-all`}>
+                    <ExternalLink size={14} /> Live Demo
+                  </a>
+                  <a href={previewProject.github} className={`border ${dark ? "border-gray-700" : "border-gray-300"} px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 transition-all hover:-translate-y-0.5`}>
+                    <Github size={14} /> Source Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      }
+
+      {/* Experience & Education */}
+      <section id="experience" className="py-24 px-6">
+        <div className="max-w-4xl mx-auto">
+          <AnimatedSection>
+            <div className="text-center mb-16">
+              <span className={`text-xs font-medium uppercase tracking-widest ${accent}`}>Background</span>
+              <h2 className="text-3xl md:text-4xl font-bold mt-2">Experience & Education</h2>
+            </div>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Experience */}
+            <div>
+              <AnimatedSection>
+                <div className="flex items-center gap-2 mb-6">
+                  <Briefcase size={18} className="text-violet-400" />
+                  <h3 className="text-lg font-semibold">Work Experience</h3>
+                </div>
+              </AnimatedSection>
+              <div className="space-y-4">
+                {experiences.map((exp, i) => (
+                  <AnimatedSection key={i} delay={i * 0.12}>
+                    <div className={`p-5 rounded-2xl border backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 ${card} relative`}>
+                      <div className={`absolute top-5 left-5 w-2 h-2 rounded-full ${accentBg}`} />
+                      <div className="pl-5">
+
+                        <h4 className="font-semibold text-sm mt-1">{exp.role}</h4>
+                        <p className={`text-xs ${textSub} mt-0.5`}>{exp.company}</p>
+                        <p className={`text-xs ${textSub} mt-2 leading-relaxed`}>{exp.desc}</p>
+                      </div>
+                    </div>
+                  </AnimatedSection>
+                ))}
+              </div>
+            </div>
+
+            {/* Education */}
+            <div>
+              <AnimatedSection>
+                <div className="flex items-center gap-2 mb-6">
+                  <GraduationCap size={18} className="text-cyan-400" />
+                  <h3 className="text-lg font-semibold">Education</h3>
+                </div>
+              </AnimatedSection>
+              <div className="space-y-4">
+                {education.map((edu, i) => (
+                  <AnimatedSection key={i} delay={i * 0.12}>
+                    <div className={`p-5 rounded-2xl border backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 ${card} relative`}>
+                      <div className="absolute top-5 left-5 w-2 h-2 rounded-full bg-cyan-500" />
+                      <div className="pl-5">
+
+                        <h4 className="font-semibold text-sm mt-1">{edu.degree}</h4>
+                        <p className={`text-xs ${textSub} mt-0.5`}>{edu.school}</p>
+                        <p className={`text-xs ${textSub} mt-2 leading-relaxed`}>{edu.desc}</p>
+                      </div>
+                    </div>
+                  </AnimatedSection>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-24 px-6">
+        <div className="max-w-2xl mx-auto">
+          <AnimatedSection>
+            <div className="text-center mb-12">
+              <span className={`text-xs font-medium uppercase tracking-widest ${accent}`}>Get In Touch</span>
+              <h2 className="text-3xl md:text-4xl font-bold mt-2">Let's Work Together</h2>
+              <p className={`${textSub} mt-3 text-sm`}>
+                Have a project in mind? Feel free to reach out and let's create something amazing.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <div className="flex flex-wrap justify-center gap-4 mb-10">
+              {[
+                { icon: <Mail size={16} />, label: "pandudargah202@gmail.com", color: "violet" },
+                { icon: <Github size={16} />, label: "panzauto46-bot", color: "cyan" },
+                { icon: <MapPin size={16} />, label: "Indonesia", color: "pink" },
+              ].map((item, i) => (
+                <div key={i} className={`flex items-center gap-2 px-4 py-2.5 rounded-full border text-sm ${card} transition-all hover:-translate-y-0.5`}>
+                  <span className={accent}>{item.icon}</span>
+                  {item.label}
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.2}>
+            <form
+              action="https://formsubmit.co/pandudargah202@gmail.com"
+              method="POST"
+              className={`p-8 rounded-3xl border backdrop-blur-sm ${card}`}
+            >
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_subject" value="New submission from Portfolio!" />
+              <input type="hidden" name="_template" value="table" />
+
+              <div className="grid md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label className={`text-xs font-medium ${textSub} mb-1.5 block`}>Full Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    placeholder="John Doe"
+                    className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 ${dark ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500" : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400"}`}
+                  />
+                </div>
+                <div>
+                  <label className={`text-xs font-medium ${textSub} mb-1.5 block`}>Email Address</label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="john@example.com"
+                    className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 ${dark ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500" : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400"}`}
                   />
                 </div>
               </div>
-            </AnimatedSection>
-          ))}
-        </div>
-      </div>
-      </section >
-
-    {/* Projects Section */ }
-    < section id = "projects" className = "py-24 px-6" >
-      <div className="max-w-5xl mx-auto">
-        <AnimatedSection>
-          <div className="text-center mb-16">
-            <span className={`text-xs font-medium uppercase tracking-widest ${accent}`}>Portfolio</span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-2">Featured Projects</h2>
-            <p className={`${textSub} mt-3 text-sm max-w-lg mx-auto`}>
-              A curated selection of projects showcasing my expertise in design, development, and problem-solving.
-            </p>
-          </div>
-        </AnimatedSection>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, i) => (
-            <AnimatedSection key={i} delay={i * 0.1}>
-              <div
-                className={`group rounded-2xl border overflow-hidden backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${card} ${hoveredProject === i ? (dark ? "shadow-violet-500/10 border-violet-500/30" : "shadow-violet-500/15 border-violet-300") : ""
-                  }`}
-                onMouseEnter={() => setHoveredProject(i)}
-                onMouseLeave={() => setHoveredProject(null)}
-              >
-                <div className={`h-40 bg-gradient-to-br ${project.color} flex items-center justify-center text-5xl relative overflow-hidden`}>
-                  <div className="absolute inset-0 bg-black/10" />
-                  {(project.image.startsWith("/") || project.image.startsWith("http")) ? (
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  ) : (
-                    <span className="relative z-10 group-hover:scale-125 transition-transform duration-500">{project.image}</span>
-                  )}
-                  {/* Overlay buttons */}
-                  <div className="absolute inset-0 z-20 bg-black/60 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <button
-                      onClick={() => setPreviewProject(project)}
-                      className="p-2.5 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors text-white"
-                    >
-                      <Eye size={16} />
-                    </button>
-                    <a href={project.github} className="p-2.5 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors text-white">
-                      <Github size={16} />
-                    </a>
-                    <a href={project.link} className="p-2.5 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors text-white">
-                      <ExternalLink size={16} />
-                    </a>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <h3 className="font-semibold text-base mb-2">{project.title}</h3>
-                  <p className={`text-xs ${textSub} leading-relaxed mb-4`}>{project.desc}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tags.map((tag, j) => (
-                      <span key={j} className={`text-xs px-2.5 py-1 rounded-full font-medium ${dark ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-gray-600"}`}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              <div className="mb-4">
+                <label className={`text-xs font-medium ${textSub} mb-1.5 block`}>Subject</label>
+                <input
+                  type="text"
+                  name="subject"
+                  required
+                  placeholder="Project Discussion"
+                  className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 ${dark ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500" : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400"}`}
+                />
               </div>
-            </AnimatedSection>
-          ))}
+              <div className="mb-6">
+                <label className={`text-xs font-medium ${textSub} mb-1.5 block`}>Message</label>
+                <textarea
+                  rows={4}
+                  name="message"
+                  required
+                  placeholder="Tell me about your project..."
+                  className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 resize-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 ${dark ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500" : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400"}`}
+                />
+              </div>
+              <button type="submit" className={`w-full ${accentBg} text-white py-3.5 rounded-xl font-medium text-sm hover:shadow-lg hover:shadow-violet-500/30 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0`}>
+                Send Message ✉️
+              </button>
+            </form>
+          </AnimatedSection>
         </div>
-      </div>
-      </section >
+      </section>
 
-    {/* Project Preview Modal */ }
-  {
-    previewProject && (
-      <div
-        className="fixed inset-0 z-50 flex items-center justify-center p-6"
-        style={{ animation: "fadeIn 0.3s ease" }}
-        onClick={() => setPreviewProject(null)}
+      {/* Footer */}
+      <footer className={`py-8 px-6 border-t ${dark ? "border-gray-800" : "border-gray-200"}`}>
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className={`text-xs ${textSub}`}>© 2026 Pandu Darma Anugrah. Crafted with ❤️ and lots of ☕</p>
+          <div className="flex items-center gap-3">
+            {[
+              { Icon: Github, href: "https://github.com/panzauto46-bot" },
+              { Icon: Linkedin, href: "https://www.linkedin.com/in/pandu-darma-195a621b2/" },
+              { Icon: Twitter, href: "https://x.com/BTC_SEANA" }
+            ].map(({ Icon, href }, i) => (
+              <a key={i} href={href} target="_blank" rel="noopener noreferrer" className={`${textSub} hover:text-violet-400 transition-colors`}>
+                <Icon size={16} />
+              </a>
+            ))}
+          </div>
+        </div>
+      </footer>
+
+      {/* Back to Top */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className={`fixed bottom-6 right-6 z-40 p-3 rounded-full ${accentBg} text-white shadow-lg shadow-violet-500/30 transition-all duration-500 hover:-translate-y-1 ${showTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+          }`}
       >
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
-        <div
-          className={`relative w-full max-w-2xl rounded-3xl border overflow-hidden ${card}`}
-          style={{ animation: "zoomIn 0.4s cubic-bezier(0.16, 1, 0.3, 1)" }}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className={`h-52 bg-gradient-to-br ${previewProject.color} flex items-center justify-center text-7xl relative`}>
-            <div className="absolute inset-0 bg-black/10" />
-            {(previewProject.image.startsWith("/") || previewProject.image.startsWith("http")) ? (
-              <img
-                src={previewProject.image}
-                alt={previewProject.title}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <span className="relative z-10">{previewProject.image}</span>
-            )}
-            <button
-              onClick={() => setPreviewProject(null)}
-              className="absolute top-4 right-4 w-8 h-8 bg-black/30 backdrop-blur-sm text-white rounded-full flex items-center justify-center text-sm hover:bg-black/50 transition-colors"
-            >
-              ✕
-            </button>
-          </div>
-          <div className="p-8">
-            <h3 className="text-2xl font-bold mb-3">{previewProject.title}</h3>
-            <p className={`${textSub} leading-relaxed text-sm mb-6`}>{previewProject.desc}</p>
-            <div className="flex flex-wrap gap-2 mb-6">
-              {previewProject.tags.map((tag, j) => (
-                <span key={j} className={`text-xs px-3 py-1.5 rounded-full font-medium ${dark ? "bg-violet-500/10 text-violet-300 border border-violet-500/20" : "bg-violet-50 text-violet-600 border border-violet-200"}`}>
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <div className="flex gap-3">
-              <a href={previewProject.link} className={`${accentBg} text-white px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-violet-500/30 transition-all`}>
-                <ExternalLink size={14} /> Live Demo
-              </a>
-              <a href={previewProject.github} className={`border ${dark ? "border-gray-700" : "border-gray-300"} px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 transition-all hover:-translate-y-0.5`}>
-                <Github size={14} /> Source Code
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
+        <ArrowUp size={18} />
+      </button>
 
-  {/* Experience & Education */ }
-  <section id="experience" className="py-24 px-6">
-    <div className="max-w-4xl mx-auto">
-      <AnimatedSection>
-        <div className="text-center mb-16">
-          <span className={`text-xs font-medium uppercase tracking-widest ${accent}`}>Background</span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2">Experience & Education</h2>
-        </div>
-      </AnimatedSection>
-
-      <div className="grid md:grid-cols-2 gap-12">
-        {/* Experience */}
-        <div>
-          <AnimatedSection>
-            <div className="flex items-center gap-2 mb-6">
-              <Briefcase size={18} className="text-violet-400" />
-              <h3 className="text-lg font-semibold">Work Experience</h3>
-            </div>
-          </AnimatedSection>
-          <div className="space-y-4">
-            {experiences.map((exp, i) => (
-              <AnimatedSection key={i} delay={i * 0.12}>
-                <div className={`p-5 rounded-2xl border backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 ${card} relative`}>
-                  <div className={`absolute top-5 left-5 w-2 h-2 rounded-full ${accentBg}`} />
-                  <div className="pl-5">
-
-                    <h4 className="font-semibold text-sm mt-1">{exp.role}</h4>
-                    <p className={`text-xs ${textSub} mt-0.5`}>{exp.company}</p>
-                    <p className={`text-xs ${textSub} mt-2 leading-relaxed`}>{exp.desc}</p>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-
-        {/* Education */}
-        <div>
-          <AnimatedSection>
-            <div className="flex items-center gap-2 mb-6">
-              <GraduationCap size={18} className="text-cyan-400" />
-              <h3 className="text-lg font-semibold">Education</h3>
-            </div>
-          </AnimatedSection>
-          <div className="space-y-4">
-            {education.map((edu, i) => (
-              <AnimatedSection key={i} delay={i * 0.12}>
-                <div className={`p-5 rounded-2xl border backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 ${card} relative`}>
-                  <div className="absolute top-5 left-5 w-2 h-2 rounded-full bg-cyan-500" />
-                  <div className="pl-5">
-
-                    <h4 className="font-semibold text-sm mt-1">{edu.degree}</h4>
-                    <p className={`text-xs ${textSub} mt-0.5`}>{edu.school}</p>
-                    <p className={`text-xs ${textSub} mt-2 leading-relaxed`}>{edu.desc}</p>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {/* Contact Section */ }
-  <section id="contact" className="py-24 px-6">
-    <div className="max-w-2xl mx-auto">
-      <AnimatedSection>
-        <div className="text-center mb-12">
-          <span className={`text-xs font-medium uppercase tracking-widest ${accent}`}>Get In Touch</span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2">Let's Work Together</h2>
-          <p className={`${textSub} mt-3 text-sm`}>
-            Have a project in mind? Feel free to reach out and let's create something amazing.
-          </p>
-        </div>
-      </AnimatedSection>
-
-      <AnimatedSection delay={0.1}>
-        <div className="flex flex-wrap justify-center gap-4 mb-10">
-          {[
-            { icon: <Mail size={16} />, label: "pandudargah202@gmail.com", color: "violet" },
-            { icon: <Github size={16} />, label: "panzauto46-bot", color: "cyan" },
-            { icon: <MapPin size={16} />, label: "Indonesia", color: "pink" },
-          ].map((item, i) => (
-            <div key={i} className={`flex items-center gap-2 px-4 py-2.5 rounded-full border text-sm ${card} transition-all hover:-translate-y-0.5`}>
-              <span className={accent}>{item.icon}</span>
-              {item.label}
-            </div>
-          ))}
-        </div>
-      </AnimatedSection>
-
-      <AnimatedSection delay={0.2}>
-        <form
-          action="https://formsubmit.co/pandudargah202@gmail.com"
-          method="POST"
-          className={`p-8 rounded-3xl border backdrop-blur-sm ${card}`}
-        >
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_subject" value="New submission from Portfolio!" />
-          <input type="hidden" name="_template" value="table" />
-
-          <div className="grid md:grid-cols-2 gap-4 mb-4">
-            <div>
-              <label className={`text-xs font-medium ${textSub} mb-1.5 block`}>Full Name</label>
-              <input
-                type="text"
-                name="name"
-                required
-                placeholder="John Doe"
-                className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 ${dark ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500" : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400"}`}
-              />
-            </div>
-            <div>
-              <label className={`text-xs font-medium ${textSub} mb-1.5 block`}>Email Address</label>
-              <input
-                type="email"
-                name="email"
-                required
-                placeholder="john@example.com"
-                className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 ${dark ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500" : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400"}`}
-              />
-            </div>
-          </div>
-          <div className="mb-4">
-            <label className={`text-xs font-medium ${textSub} mb-1.5 block`}>Subject</label>
-            <input
-              type="text"
-              name="subject"
-              required
-              placeholder="Project Discussion"
-              className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 ${dark ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500" : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400"}`}
-            />
-          </div>
-          <div className="mb-6">
-            <label className={`text-xs font-medium ${textSub} mb-1.5 block`}>Message</label>
-            <textarea
-              rows={4}
-              name="message"
-              required
-              placeholder="Tell me about your project..."
-              className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 resize-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 ${dark ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500" : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400"}`}
-            />
-          </div>
-          <button type="submit" className={`w-full ${accentBg} text-white py-3.5 rounded-xl font-medium text-sm hover:shadow-lg hover:shadow-violet-500/30 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0`}>
-            Send Message ✉️
-          </button>
-        </form>
-      </AnimatedSection>
-    </div>
-  </section>
-
-  {/* Footer */ }
-  <footer className={`py-8 px-6 border-t ${dark ? "border-gray-800" : "border-gray-200"}`}>
-    <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      <p className={`text-xs ${textSub}`}>© 2026 Pandu Darma Anugrah. Crafted with ❤️ and lots of ☕</p>
-      <div className="flex items-center gap-3">
-        {[
-          { Icon: Github, href: "https://github.com/panzauto46-bot" },
-          { Icon: Linkedin, href: "https://www.linkedin.com/in/pandu-darma-195a621b2/" },
-          { Icon: Twitter, href: "https://x.com/BTC_SEANA" }
-        ].map(({ Icon, href }, i) => (
-          <a key={i} href={href} target="_blank" rel="noopener noreferrer" className={`${textSub} hover:text-violet-400 transition-colors`}>
-            <Icon size={16} />
-          </a>
-        ))}
-      </div>
-    </div>
-  </footer>
-
-  {/* Back to Top */ }
-  <button
-    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-    className={`fixed bottom-6 right-6 z-40 p-3 rounded-full ${accentBg} text-white shadow-lg shadow-violet-500/30 transition-all duration-500 hover:-translate-y-1 ${showTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
-      }`}
-  >
-    <ArrowUp size={18} />
-  </button>
-
-  {/* Global Animations */ }
-  <style>{`
+      {/* Global Animations */}
+      <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-15px); }
