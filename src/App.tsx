@@ -140,7 +140,7 @@ const projects: Project[] = [
     tags: ["Kotlin", "Android", "Tezos", "Sui"],
     image: "/cred-pos.png",
     color: "from-green-500 to-teal-600",
-    link: "https://github.com/panzauto46-bot/CredPOS",
+    link: "https://credposappreview.vercel.app/",
     github: "https://github.com/panzauto46-bot/CredPOS",
   },
   {
