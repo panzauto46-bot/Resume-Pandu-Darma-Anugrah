@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, ReactNode } from "react";
-import { Moon, Sun, Mail, MapPin, ExternalLink, Github, Linkedin, Twitter, ChevronDown, Code, Palette, Globe, Server, ArrowUp, Briefcase, GraduationCap, Eye, Database } from "lucide-react";
+import { Moon, Sun, Mail, MapPin, ExternalLink, Github, Linkedin, Twitter, ChevronDown, Code, Palette, Globe, Server, Briefcase, GraduationCap, Eye, Database } from "lucide-react";
 
 // Define interfaces for data structures
 interface Project {
@@ -198,14 +198,12 @@ export default function Portfolio() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [scrollY, setScrollY] = useState(0);
   const [activeSection, setActiveSection] = useState("home");
-  const [showTop, setShowTop] = useState(false);
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [previewProject, setPreviewProject] = useState<Project | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY || document.documentElement.scrollTop);
-      setShowTop((window.scrollY || document.documentElement.scrollTop) > 400);
       const sections = ["home", "about", "skills", "projects", "experience", "contact"];
       for (const s of sections.reverse()) {
         const el = document.getElementById(s);
@@ -716,13 +714,7 @@ export default function Portfolio() {
       </footer>
 
       {/* Back to Top */}
-      <button
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className={`fixed bottom-6 right-6 z-40 p-3 rounded-full ${accentBg} text-white shadow-lg shadow-violet-500/30 transition-all duration-500 hover:-translate-y-1 ${showTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
-          }`}
-      >
-        <ArrowUp size={18} />
-      </button>
+
 
       {/* Global Animations */}
       <style>{`
