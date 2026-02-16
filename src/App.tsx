@@ -129,7 +129,7 @@ const projects: Project[] = [
     title: "CrediProcure",
     desc: "Decentralized B2B Invoice Financing Platform on Creditcoin.",
     tags: ["Solidity", "React", "Creditcoin", "RWA"],
-    image: "🏢",
+    image: "/crediprocure.jpeg",
     color: "from-blue-500 to-indigo-600",
     link: "https://credi-procure.vercel.app/",
     github: "https://github.com/panzauto46-bot/CrediProcure",
