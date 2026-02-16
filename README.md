@@ -57,7 +57,7 @@ This portfolio highlights my most impactful work across **Web3, AI, and Full-Sta
 
 ### 📊 Fintech & Analytics
 *   **[Trading Analytics Dashboard](https://trading-analytics-dashboard-chi.vercel.app/)**: AI-Driven Trading Insights & Consistency Heatmap.
-*   **[StableFlow](https://github.com/panzauto46-bot/StableFlow)**: Institutional Treasury & Expense Management System on Solana.
+*   **[StableFlow](https://stableflowweb.vercel.app/)**: Institutional Treasury & Expense Management System on Solana.
 *   **[BIT-SHADOW](https://bit-shadow.vercel.app)**: High-frequency crypto trading dashboard for real-time insights.
 
 ---

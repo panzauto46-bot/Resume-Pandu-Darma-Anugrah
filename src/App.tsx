@@ -156,9 +156,9 @@ const projects: Project[] = [
     title: "StableFlow",
     desc: "Institutional Treasury & Expense Management System on Solana.",
     tags: ["Solana", "USDC", "Treasury", "DeFi"],
-    image: "🌊",
+    image: "/stableflow.jpeg",
     color: "from-cyan-400 to-blue-500",
-    link: "https://github.com/panzauto46-bot/StableFlow",
+    link: "https://stableflowweb.vercel.app/",
     github: "https://github.com/panzauto46-bot/StableFlow",
   },
   {
