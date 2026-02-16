@@ -75,7 +75,7 @@ const projects: Project[] = [
     title: "agent.os",
     desc: "An autonomous AI Agent Operating System designed for complex task execution and orchestration.",
     tags: ["TypeScript", "AI Agents", "LLM", "Automation"],
-    image: "/agent-os.png",
+    image: "/agent-os.jpeg",
     color: "from-violet-500 to-purple-600",
     link: "https://github.com/panzauto46-bot/agent.os",
     github: "https://github.com/panzauto46-bot/agent.os",
