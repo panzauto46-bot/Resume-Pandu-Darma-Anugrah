@@ -497,7 +497,7 @@ export default function Portfolio() {
                       <span className="relative z-10 group-hover:scale-125 transition-transform duration-500">{project.image}</span>
                     )}
                     {/* Overlay buttons */}
-                    <div className="absolute inset-0 bg-black/60 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <div className="absolute inset-0 z-20 bg-black/60 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
                       <button
                         onClick={() => setPreviewProject(project)}
                         className="p-2.5 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors text-white"
