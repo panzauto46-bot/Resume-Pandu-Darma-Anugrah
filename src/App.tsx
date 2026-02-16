@@ -1,8 +1,40 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, ReactNode } from "react";
 import { Moon, Sun, Mail, Phone, MapPin, ExternalLink, Github, Linkedin, Twitter, ChevronDown, Code, Palette, Globe, Server, ArrowUp, Star, Calendar, Briefcase, GraduationCap, Award, Eye } from "lucide-react";
 
-const useInView = (threshold = 0.15) => {
-  const ref = useRef(null);
+// Define interfaces for data structures
+interface Project {
+  title: string;
+  desc: string;
+  tags: string[];
+  image: string;
+  color: string;
+  link: string;
+  github: string;
+}
+
+interface Skill {
+  name: string;
+  level: number;
+  icon: ReactNode;
+}
+
+interface Experience {
+  year: string;
+  role: string;
+  company: string;
+  desc: string;
+}
+
+interface Education {
+  year: string;
+  degree: string;
+  school: string;
+  desc: string;
+}
+
+// Hook with proper types
+const useInView = (threshold = 0.15): [React.RefObject<HTMLDivElement>, boolean] => {
+  const ref = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -15,7 +47,13 @@ const useInView = (threshold = 0.15) => {
   return [ref, isInView];
 };
 
-const AnimatedSection = ({ children, delay = 0, className = "" }) => {
+interface AnimatedSectionProps {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+}
+
+const AnimatedSection = ({ children, delay = 0, className = "" }: AnimatedSectionProps) => {
   const [ref, isInView] = useInView(0.1);
   return (
     <div
@@ -32,7 +70,7 @@ const AnimatedSection = ({ children, delay = 0, className = "" }) => {
   );
 };
 
-const projects = [
+const projects: Project[] = [
   {
     title: "E-Commerce Platform",
     desc: "A full-stack e-commerce application with real-time inventory management, payment gateway integration, and admin dashboard.",
@@ -89,7 +127,7 @@ const projects = [
   },
 ];
 
-const skills = [
+const skills: Skill[] = [
   { name: "React / Next.js", level: 95, icon: <Code size={16} /> },
   { name: "TypeScript", level: 90, icon: <Code size={16} /> },
   { name: "Node.js / Express", level: 88, icon: <Server size={16} /> },
@@ -98,24 +136,25 @@ const skills = [
   { name: "DevOps / AWS", level: 78, icon: <Globe size={16} /> },
 ];
 
-const experiences = [
+const experiences: Experience[] = [
   { year: "2024 — Present", role: "Senior Frontend Engineer", company: "Tech Corp Inc.", desc: "Leading the frontend architecture team, building scalable design systems and mentoring junior developers." },
   { year: "2022 — 2024", role: "Full Stack Developer", company: "Digital Agency Co.", desc: "Developed 20+ client projects including e-commerce platforms, dashboards, and mobile applications." },
   { year: "2020 — 2022", role: "Junior Web Developer", company: "StartUp Hub", desc: "Built responsive web applications and contributed to open-source projects with 500+ GitHub stars." },
 ];
 
-const education = [
+const education: Education[] = [
   { year: "2016 — 2020", degree: "B.Sc. Computer Science", school: "University of Technology", desc: "Graduated with honors. Focus on Software Engineering and Human-Computer Interaction." },
   { year: "2020", degree: "Full Stack Certification", school: "freeCodeCamp", desc: "Completed 1,200+ hours of coursework in web development, APIs, and microservices." },
 ];
 
 export default function Portfolio() {
   const [dark, setDark] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [scrollY, setScrollY] = useState(0);
   const [activeSection, setActiveSection] = useState("home");
   const [showTop, setShowTop] = useState(false);
-  const [hoveredProject, setHoveredProject] = useState(null);
-  const [previewProject, setPreviewProject] = useState(null);
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const [previewProject, setPreviewProject] = useState<Project | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -142,7 +181,7 @@ export default function Portfolio() {
   const accent = "text-violet-400";
   const accentBg = "bg-violet-500";
 
-  const scrollTo = (id) => {
+  const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -159,11 +198,10 @@ export default function Portfolio() {
           <button
             key={item}
             onClick={() => scrollTo(item)}
-            className={`px-3 py-1.5 rounded-full text-xs font-medium capitalize transition-all duration-300 ${
-              activeSection === item
+            className={`px-3 py-1.5 rounded-full text-xs font-medium capitalize transition-all duration-300 ${activeSection === item
                 ? `${accentBg} text-white shadow-lg shadow-violet-500/25`
                 : `${textSub} hover:text-violet-400`
-            }`}
+              }`}
           >
             {item}
           </button>
@@ -171,9 +209,8 @@ export default function Portfolio() {
         <div className={`w-px h-5 mx-1 ${dark ? "bg-gray-700" : "bg-gray-300"}`} />
         <button
           onClick={() => setDark(!dark)}
-          className={`p-2 rounded-full transition-all duration-300 ${
-            dark ? "bg-gray-800 text-yellow-400 hover:bg-gray-700" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-          }`}
+          className={`p-2 rounded-full transition-all duration-300 ${dark ? "bg-gray-800 text-yellow-400 hover:bg-gray-700" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+            }`}
         >
           {dark ? <Sun size={14} /> : <Moon size={14} />}
         </button>
@@ -368,9 +405,8 @@ export default function Portfolio() {
             {projects.map((project, i) => (
               <AnimatedSection key={i} delay={i * 0.1}>
                 <div
-                  className={`group rounded-2xl border overflow-hidden backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${card} ${
-                    hoveredProject === i ? (dark ? "shadow-violet-500/10 border-violet-500/30" : "shadow-violet-500/15 border-violet-300") : ""
-                  }`}
+                  className={`group rounded-2xl border overflow-hidden backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${card} ${hoveredProject === i ? (dark ? "shadow-violet-500/10 border-violet-500/30" : "shadow-violet-500/15 border-violet-300") : ""
+                    }`}
                   onMouseEnter={() => setHoveredProject(i)}
                   onMouseLeave={() => setHoveredProject(null)}
                 >
@@ -610,9 +646,8 @@ export default function Portfolio() {
       {/* Back to Top */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className={`fixed bottom-6 right-6 z-40 p-3 rounded-full ${accentBg} text-white shadow-lg shadow-violet-500/30 transition-all duration-500 hover:-translate-y-1 ${
-          showTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
-        }`}
+        className={`fixed bottom-6 right-6 z-40 p-3 rounded-full ${accentBg} text-white shadow-lg shadow-violet-500/30 transition-all duration-500 hover:-translate-y-1 ${showTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+          }`}
       >
         <ArrowUp size={18} />
       </button>
