@@ -75,7 +75,7 @@ const projects: Project[] = [
     title: "Singular Yield",
     desc: "Autonomous 'Self-Driving' Yield Engine on BNB Chain with automated harvesting & compounding strategies.",
     tags: ["Solidity", "React", "BNB Chain", "DeFi"],
-    image: "🌌",
+    image: "/singular-yield.jpeg",
     color: "from-indigo-500 to-purple-600",
     link: "https://singular-yield.vercel.app",
     github: "https://github.com/panzauto46-bot/SingularYield",
