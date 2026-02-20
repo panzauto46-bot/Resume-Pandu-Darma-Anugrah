@@ -72,6 +72,15 @@ const AnimatedSection = ({ children, delay = 0, className = "" }: AnimatedSectio
 
 const projects: Project[] = [
   {
+    title: "Singular Yield",
+    desc: "Autonomous 'Self-Driving' Yield Engine on BNB Chain with automated harvesting & compounding strategies.",
+    tags: ["Solidity", "React", "BNB Chain", "DeFi"],
+    image: "🌌",
+    color: "from-indigo-500 to-purple-600",
+    link: "https://singular-yield.vercel.app",
+    github: "https://github.com/panzauto46-bot/SingularYield",
+  },
+  {
     title: "agent.os",
     desc: "An autonomous AI Agent Operating System designed for complex task execution and orchestration.",
     tags: ["TypeScript", "AI Agents", "LLM", "Automation"],
