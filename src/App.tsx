@@ -264,30 +264,30 @@ const skills: Skill[] = [
 const experiences: Experience[] = [
   {
     year: "2024 - Present",
-    role: "Web3 Architect and AI Engineer",
+    role: "Independent Web3 Architect and AI Engineer",
     company: "Freelance / Open Source",
-    desc: "Building next-gen AI agent operating systems and decentralized protocols on Stacks and Solana.",
+    desc: "Leading end-to-end delivery of AI x Web3 products, including agent systems, security tooling, and multi-chain payment platforms from architecture to production deployment.",
   },
   {
     year: "2023 - 2024",
-    role: "Full Stack Developer",
-    company: "Tech Projects",
-    desc: "Developed high-frequency trading dashboards and secure inventory management systems for crypto assets.",
+    role: "Full-Stack Product Engineer",
+    company: "Independent Product Initiatives",
+    desc: "Built and shipped analytics dashboards, treasury workflows, and DeFi-oriented infrastructure with strong focus on usability, performance, and reliability.",
   },
   {
     year: "2022 - 2023",
-    role: "Frontend Developer",
-    company: "Digital Solutions",
-    desc: "Specialized in building responsive, interactive user interfaces for various web applications.",
+    role: "Frontend Engineer",
+    company: "Digital Product Projects",
+    desc: "Developed responsive, accessible interfaces and reusable UI foundations for web applications, establishing strong product quality and delivery discipline.",
   },
 ];
 
 const education: Education[] = [
   {
     year: "2026",
-    degree: "Continuous Learning",
-    school: "Open Source Community",
-    desc: "Active contributor and builder in the Web3 and AI space, constantly mastering new technologies.",
+    degree: "Continuous Professional Development",
+    school: "Open Source, Hackathons, and Builder Communities",
+    desc: "Ongoing specialization in AI systems, blockchain architecture, smart contracts, and product engineering through practical builds and ecosystem collaboration.",
   },
 ];
 
@@ -793,7 +793,7 @@ export default function Portfolio() {
             <AnimatedSection>
               <div className="mb-10">
                 <p className={`text-xs font-semibold uppercase tracking-[0.2em] ${theme.accentText}`}>Experience</p>
-                <h2 className="display-font mt-3 text-3xl font-bold sm:text-4xl">Background and Education</h2>
+                <h2 className="display-font mt-3 text-3xl font-bold sm:text-4xl">Professional Experience and Education</h2>
               </div>
             </AnimatedSection>
 
@@ -801,7 +801,7 @@ export default function Portfolio() {
               <div className={`rounded-3xl border p-6 backdrop-blur-md sm:p-8 ${theme.panel}`}>
                 <div className="mb-6 flex items-center gap-2">
                   <Briefcase size={18} className={dark ? "text-cyan-300" : "text-sky-700"} />
-                  <h3 className="display-font text-xl font-semibold">Work Experience</h3>
+                  <h3 className="display-font text-xl font-semibold">Professional Experience</h3>
                 </div>
                 <div className="space-y-4">
                   {experiences.map((item, index) => (
