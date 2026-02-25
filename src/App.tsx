@@ -253,12 +253,12 @@ const projects: Project[] = [
 ];
 
 const skills: Skill[] = [
-  { name: "AI Agents and LLM (Groq, DeepSeek)", level: 95, icon: <Server size={16} /> },
-  { name: "Multi-Chain Web3 (Solana, Stacks, BNB)", level: 92, icon: <Globe size={16} /> },
-  { name: "Full-Stack (React, Next.js, Node.js)", level: 90, icon: <Code size={16} /> },
-  { name: "Mobile Development (Kotlin, Android)", level: 88, icon: <Database size={16} /> },
-  { name: "Smart Contracts (Solidity, Clarity, Rust)", level: 85, icon: <Code size={16} /> },
-  { name: "RWA and Fintech Architecture", level: 88, icon: <Palette size={16} /> },
+  { name: "AI Agent Systems and LLM Operations (Groq, DeepSeek)", level: 95, icon: <Server size={16} /> },
+  { name: "Multi-Chain Web3 Architecture (EVM, Solana, BCH)", level: 93, icon: <Globe size={16} /> },
+  { name: "Full-Stack Product Engineering (React, Next.js, Node.js)", level: 91, icon: <Code size={16} /> },
+  { name: "Smart Contract Engineering (Solidity, Clarity, Rust, Anchor)", level: 89, icon: <Code size={16} /> },
+  { name: "Mobile and Wallet Integration (Kotlin, Android, Web3j)", level: 86, icon: <Database size={16} /> },
+  { name: "Fintech, DeFi, and RWA System Design", level: 90, icon: <Palette size={16} /> },
 ];
 
 const experiences: Experience[] = [
@@ -633,7 +633,10 @@ export default function Portfolio() {
             <AnimatedSection>
               <div className="mb-10">
                 <p className={`text-xs font-semibold uppercase tracking-[0.2em] ${theme.accentText}`}>Resume</p>
-                <h2 className="display-font mt-3 text-3xl font-bold sm:text-4xl">Software Skills and Capabilities</h2>
+                <h2 className="display-font mt-3 text-3xl font-bold sm:text-4xl">Core Skills and Delivery Focus</h2>
+                <p className={`mt-4 max-w-3xl text-sm leading-relaxed ${theme.textMuted}`}>
+                  Portfolio-aligned capabilities across AI systems, security, fintech, and multi-chain product delivery.
+                </p>
               </div>
             </AnimatedSection>
 
@@ -669,29 +672,29 @@ export default function Portfolio() {
               <div className="space-y-5">
                 <AnimatedSection delay={0.16}>
                   <div className={`rounded-2xl border p-6 backdrop-blur-md ${theme.panel}`}>
-                    <h3 className="display-font text-lg font-semibold">What Can I Do?</h3>
+                    <h3 className="display-font text-lg font-semibold">Core Delivery Capabilities</h3>
                     <ul className={`mt-4 space-y-2 text-sm leading-relaxed ${theme.textMuted}`}>
-                      <li>Autonomous AI Agent System Architecture</li>
-                      <li>Multi-Chain dApp and DeFi Product Engineering</li>
-                      <li>Smart Contract and Treasury Infrastructure Design</li>
-                      <li>Crypto Trading Analytics and Monitoring Platforms</li>
+                      <li>Design and ship end-to-end AI x Web3 products from concept to production.</li>
+                      <li>Build multi-chain dApps, payment rails, and treasury-ready DeFi workflows.</li>
+                      <li>Engineer secure smart contract systems with practical audit and monitoring practices.</li>
+                      <li>Deliver analytics-driven dashboards for trading, operations, and risk visibility.</li>
                     </ul>
                   </div>
                 </AnimatedSection>
 
                 <AnimatedSection delay={0.22}>
                   <div className={`rounded-2xl border p-6 backdrop-blur-md ${theme.card}`}>
-                    <h3 className="display-font text-lg font-semibold">Design and Build Focus</h3>
+                    <h3 className="display-font text-lg font-semibold">Domain Expertise</h3>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {[
                         "AI Agents",
-                        "Web3 Ecosystem",
+                        "Blockchain Security",
                         "Fintech",
-                        "Automation",
+                        "Payments",
                         "RWA",
-                        "Product Strategy",
-                        "Security",
-                        "Performance",
+                        "DeFi Infrastructure",
+                        "Product Delivery",
+                        "Analytics",
                       ].map((item) => (
                         <span key={item} className={`rounded-full border px-3 py-1.5 text-xs font-medium ${theme.chip}`}>
                           {item}
