@@ -1,7 +1,24 @@
-import { useState, useEffect, useRef, ReactNode } from "react";
-import { Moon, Sun, Mail, MapPin, ExternalLink, Github, Linkedin, Twitter, ChevronDown, Code, Palette, Globe, Server, Briefcase, GraduationCap, Eye, Database } from "lucide-react";
+﻿import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  Moon,
+  Sun,
+  Mail,
+  MapPin,
+  ExternalLink,
+  Github,
+  Linkedin,
+  Twitter,
+  ChevronDown,
+  Code,
+  Palette,
+  Globe,
+  Server,
+  Briefcase,
+  GraduationCap,
+  Eye,
+  Database,
+} from "lucide-react";
 
-// Define interfaces for data structures
 interface Project {
   title: string;
   desc: string;
@@ -32,51 +49,42 @@ interface Education {
   desc: string;
 }
 
-// Hook with proper types
-const useInView = (threshold = 0.15): [React.RefObject<HTMLDivElement>, boolean] => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isInView, setIsInView] = useState(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setIsInView(true); },
-      { threshold }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [threshold]);
-  return [ref, isInView];
-};
-
 interface AnimatedSectionProps {
   children: ReactNode;
   delay?: number;
   className?: string;
 }
 
-const AnimatedSection = ({ children, delay = 0, className = "" }: AnimatedSectionProps) => {
-  const [ref, isInView] = useInView(0.1);
-  return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        opacity: isInView ? 1 : 0,
-        transform: isInView ? "translateY(0) scale(1)" : "translateY(60px) scale(0.92)",
-        transition: `all 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`,
-      }}
-    >
-      {children}
-    </div>
-  );
+interface SectionBackdropProps {
+  image: string;
+  dark: boolean;
+}
+
+const navItems = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Resume" },
+  { id: "projects", label: "Portfolio" },
+  { id: "experience", label: "Experience" },
+  { id: "contact", label: "Contact" },
+];
+
+const sectionBackgrounds: Record<string, string> = {
+  home: "/agent-os.jpeg",
+  about: "/vibe-agent.jpeg",
+  skills: "/stableflow.jpeg",
+  projects: "/crediprocure.jpeg",
+  experience: "/trading-analytics.jpeg",
+  contact: "/anchorguard-ai.jpeg",
 };
 
 const projects: Project[] = [
   {
     title: "Singular Yield",
-    desc: "Autonomous 'Self-Driving' Yield Engine on BNB Chain with automated harvesting & compounding strategies.",
+    desc: "Autonomous Self-Driving Yield Engine on BNB Chain with automated harvesting and compounding strategies.",
     tags: ["Solidity", "React", "BNB Chain", "DeFi"],
     image: "/singular-yield.jpeg",
-    color: "from-indigo-500 to-purple-600",
+    color: "from-sky-500 to-cyan-500",
     link: "https://singular-yield.vercel.app",
     github: "https://github.com/panzauto46-bot/SingularYield",
   },
@@ -85,7 +93,7 @@ const projects: Project[] = [
     desc: "An autonomous AI Agent Operating System designed for complex task execution and orchestration.",
     tags: ["TypeScript", "AI Agents", "LLM", "Automation"],
     image: "/agent-os.jpeg",
-    color: "from-violet-500 to-purple-600",
+    color: "from-indigo-500 to-cyan-500",
     link: "https://agent-os-id.vercel.app",
     github: "https://github.com/panzauto46-bot/agent.os",
   },
@@ -94,7 +102,7 @@ const projects: Project[] = [
     desc: "Instant Pay-to-Download Protocol built on the Stacks Blockchain, enabling seamless digital asset monetization.",
     tags: ["TypeScript", "Stacks", "Blockchain", "Web3"],
     image: "/instadrop.jpeg",
-    color: "from-orange-500 to-red-600",
+    color: "from-amber-500 to-orange-500",
     link: "https://instadrop402.vercel.app/",
     github: "https://github.com/panzauto46-bot/InstaDrop402web",
   },
@@ -103,7 +111,7 @@ const projects: Project[] = [
     desc: "Advanced AI-powered security and monitoring solution for protecting digital assets and infrastructure.",
     tags: ["TypeScript", "AI", "Security", "Monitoring"],
     image: "/anchorguard-ai.jpeg",
-    color: "from-cyan-500 to-blue-600",
+    color: "from-cyan-500 to-blue-500",
     link: "https://anchor-guard-ai.vercel.app/",
     github: "https://github.com/panzauto46-bot/AnchorGuard-AI",
   },
@@ -112,7 +120,7 @@ const projects: Project[] = [
     desc: "High-frequency crypto trading dashboard and analytics platform for real-time market insights.",
     tags: ["TypeScript", "Crypto", "Trading", "Analytics"],
     image: "/bit-shadow.jpeg",
-    color: "from-emerald-500 to-green-600",
+    color: "from-emerald-500 to-lime-500",
     link: "https://bit-shadow.vercel.app",
     github: "https://github.com/panzauto46-bot/BIT-SHADOW",
   },
@@ -121,7 +129,7 @@ const projects: Project[] = [
     desc: "Bitcoin inventory and procurement management system aimed at streamlining detailed satinvoicing.",
     tags: ["TypeScript", "Bitcoin", "Procurement", "Inventory"],
     image: "/satsprocure.jpeg",
-    color: "from-amber-500 to-orange-600",
+    color: "from-yellow-500 to-amber-500",
     link: "https://sats-procure.vercel.app",
     github: "https://github.com/panzauto46-bot/SatsProcure-atau-BtcInventory-",
   },
@@ -130,7 +138,7 @@ const projects: Project[] = [
     desc: "Educational platform and resource hub for Solana blockchain development and smart contract engineering.",
     tags: ["TypeScript", "Solana", "Education", "Web3"],
     image: "/solforge.jpeg",
-    color: "from-purple-500 to-indigo-600",
+    color: "from-violet-500 to-indigo-500",
     link: "https://solforge-academy.vercel.app",
     github: "https://github.com/panzauto46-bot/SolForge-Academy",
   },
@@ -139,7 +147,7 @@ const projects: Project[] = [
     desc: "Decentralized B2B Invoice Financing Platform on Creditcoin.",
     tags: ["Solidity", "React", "Creditcoin", "RWA"],
     image: "/crediprocure.jpeg",
-    color: "from-blue-500 to-indigo-600",
+    color: "from-blue-500 to-indigo-500",
     link: "https://credi-procure.vercel.app/",
     github: "https://github.com/panzauto46-bot/CrediProcure",
   },
@@ -148,29 +156,28 @@ const projects: Project[] = [
     desc: "DeFi-Integrated Point of Sale with Multi-Chain Wallet Connect.",
     tags: ["Kotlin", "Android", "Tezos", "Sui"],
     image: "/cred-pos.png",
-    color: "from-green-500 to-teal-600",
+    color: "from-green-500 to-teal-500",
     link: "https://credposappreview.vercel.app/",
     github: "https://github.com/panzauto46-bot/CredPOS",
   },
   {
     title: "Trading Analytics Dashboard",
-    desc: "AI-Driven Trading Insights & Consistency Heatmap.",
+    desc: "AI-Driven Trading Insights and Consistency Heatmap.",
     tags: ["Next.js", "AI", "Trading", "Analytics"],
     image: "/trading-analytics.jpeg",
-    color: "from-gray-700 to-gray-900",
+    color: "from-slate-600 to-slate-800",
     link: "https://trading-analytics-dashboard-chi.vercel.app/",
     github: "https://github.com/panzauto46-bot/Trading-Analytics-Dashboard",
   },
   {
     title: "StableFlow",
-    desc: "Institutional Treasury & Expense Management System on Solana.",
+    desc: "Institutional Treasury and Expense Management System on Solana.",
     tags: ["Solana", "USDC", "Treasury", "DeFi"],
     image: "/stableflow.jpeg",
     color: "from-cyan-400 to-blue-500",
     link: "https://stableflowweb.vercel.app/",
     github: "https://github.com/panzauto46-bot/StableFlow",
   },
-
   {
     title: "VibeAgent",
     desc: "AI-Powered Financial Assistant on BNB Chain (Android App).",
@@ -180,574 +187,892 @@ const projects: Project[] = [
     link: "https://vibeagentweb.vercel.app/",
     github: "https://github.com/panzauto46-bot/VibeAgent",
   },
-
 ];
 
 const skills: Skill[] = [
-  { name: "AI Agents & LLM (Groq, DeepSeek)", level: 95, icon: <Server size={16} /> },
+  { name: "AI Agents and LLM (Groq, DeepSeek)", level: 95, icon: <Server size={16} /> },
   { name: "Multi-Chain Web3 (Solana, Stacks, BNB)", level: 92, icon: <Globe size={16} /> },
   { name: "Full-Stack (React, Next.js, Node.js)", level: 90, icon: <Code size={16} /> },
-  { name: "Mobile Development (Kotlin, Android)", level: 88, icon: <Database size={16} /> }, // Using Database icon as placeholder for mobile/storage
+  { name: "Mobile Development (Kotlin, Android)", level: 88, icon: <Database size={16} /> },
   { name: "Smart Contracts (Solidity, Clarity, Rust)", level: 85, icon: <Code size={16} /> },
-  { name: "RWA & Fintech Architecture", level: 88, icon: <Palette size={16} /> },
+  { name: "RWA and Fintech Architecture", level: 88, icon: <Palette size={16} /> },
 ];
 
 const experiences: Experience[] = [
-  { year: "2024 — Present", role: "Web3 Architect & AI Engineer", company: "Freelance / Open Source", desc: "Building next-gen AI agent operating systems and decentralized protocols on Stacks and Solana." },
-  { year: "2023 — 2024", role: "Full Stack Developer", company: "Tech Projects", desc: "Developed high-frequency trading dashboards and secure inventory management systems for crypto assets." },
-  { year: "2022 — 2023", role: "Frontend Developer", company: "Digital Solutions", desc: "Specialized in building responsive, interactive user interfaces for various web applications." },
+  {
+    year: "2024 - Present",
+    role: "Web3 Architect and AI Engineer",
+    company: "Freelance / Open Source",
+    desc: "Building next-gen AI agent operating systems and decentralized protocols on Stacks and Solana.",
+  },
+  {
+    year: "2023 - 2024",
+    role: "Full Stack Developer",
+    company: "Tech Projects",
+    desc: "Developed high-frequency trading dashboards and secure inventory management systems for crypto assets.",
+  },
+  {
+    year: "2022 - 2023",
+    role: "Frontend Developer",
+    company: "Digital Solutions",
+    desc: "Specialized in building responsive, interactive user interfaces for various web applications.",
+  },
 ];
 
 const education: Education[] = [
-  { year: "2026", degree: "Continuous Learning", school: "Open Source Community", desc: "Active contributor and builder in the Web3 and AI space, constantly mastering new technologies." },
+  {
+    year: "2026",
+    degree: "Continuous Learning",
+    school: "Open Source Community",
+    desc: "Active contributor and builder in the Web3 and AI space, constantly mastering new technologies.",
+  },
 ];
+
+const socialLinks = [
+  { icon: Github, href: "https://github.com/panzauto46-bot", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/pandu-darma-195a621b2/", label: "LinkedIn" },
+  { icon: Twitter, href: "https://x.com/BTC_SEANA", label: "Twitter" },
+];
+
+const useInView = (threshold = 0.15): [React.RefObject<HTMLDivElement>, boolean] => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { threshold },
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return [ref, isInView];
+};
+
+const AnimatedSection = ({ children, delay = 0, className = "" }: AnimatedSectionProps) => {
+  const [ref, isInView] = useInView(0.12);
+
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: isInView ? 1 : 0,
+        transform: isInView ? "translateY(0px)" : "translateY(20px)",
+        transition: `opacity 0.62s ease ${delay}s, transform 0.62s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`,
+        willChange: "opacity, transform",
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
+const SectionBackdrop = ({ image, dark }: SectionBackdropProps) => (
+  <div className="absolute inset-0">
+    <img src={image} alt="" className="animate-bg-drift h-full w-full object-cover opacity-30" />
+    <div
+      className="absolute inset-0"
+      style={{
+        background: dark
+          ? "linear-gradient(105deg, rgba(3,8,16,0.97) 0%, rgba(6,14,28,0.85) 45%, rgba(2,8,20,0.97) 100%)"
+          : "linear-gradient(105deg, rgba(248,250,252,0.95) 0%, rgba(226,232,240,0.85) 45%, rgba(241,245,249,0.95) 100%)",
+      }}
+    />
+    <div
+      className="absolute inset-0"
+      style={{
+        backgroundImage: dark
+          ? "radial-gradient(circle at 18% 20%, rgba(56,189,248,0.16), transparent 46%), radial-gradient(circle at 85% 80%, rgba(251,191,36,0.12), transparent 42%)"
+          : "radial-gradient(circle at 18% 20%, rgba(14,116,144,0.1), transparent 48%), radial-gradient(circle at 85% 80%, rgba(217,119,6,0.1), transparent 42%)",
+      }}
+    />
+  </div>
+);
 
 export default function Portfolio() {
   const [dark, setDark] = useState(true);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [scrollY, setScrollY] = useState(0);
   const [activeSection, setActiveSection] = useState("home");
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [previewProject, setPreviewProject] = useState<Project | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY || document.documentElement.scrollTop);
-      const sections = ["home", "about", "skills", "projects", "experience", "contact"];
-      for (const s of sections.reverse()) {
-        const el = document.getElementById(s);
-        if (el && (window.scrollY || document.documentElement.scrollTop) >= el.offsetTop - 200) {
-          setActiveSection(s);
-          break;
-        }
+      const currentSection = [...navItems]
+        .reverse()
+        .find((item) => {
+          const section = document.getElementById(item.id);
+          return section ? window.scrollY + 220 >= section.offsetTop : false;
+        });
+
+      if (currentSection) {
+        setActiveSection(currentSection.id);
       }
     };
-    window.addEventListener("scroll", handleScroll);
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const bg = dark ? "bg-gray-950" : "bg-gray-50";
-  const text = dark ? "text-gray-100" : "text-gray-900";
-  const textSub = dark ? "text-gray-400" : "text-gray-500";
-  const card = dark ? "bg-gray-900/70 border-gray-800" : "bg-white/80 border-gray-200";
-  const navBg = dark ? "bg-gray-950/80 border-gray-800" : "bg-white/80 border-gray-200";
-  const accent = "text-violet-400";
-  const accentBg = "bg-violet-500";
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const navItems = ["home", "about", "skills", "projects", "experience", "contact"];
+  const theme = dark
+    ? {
+        shell: "bg-[#020712] text-slate-100",
+        nav: "bg-[#040a16]/80 border-slate-700/60 shadow-[0_10px_40px_rgba(2,6,23,0.55)]",
+        navItem: "text-slate-300 hover:text-cyan-300",
+        navActive: "bg-cyan-300 text-slate-950 shadow-[0_8px_24px_rgba(34,211,238,0.32)]",
+        panel: "bg-[#081220]/72 border-cyan-500/25",
+        card: "bg-[#0a172a]/78 border-slate-700/70",
+        textMuted: "text-slate-300/85",
+        textSoft: "text-slate-400",
+        accentText: "text-cyan-300",
+        primaryButton: "bg-cyan-300 text-slate-950 hover:bg-cyan-200",
+        secondaryButton: "border-slate-500/70 text-slate-100 hover:border-cyan-300 hover:text-cyan-300",
+        socialButton: "border-slate-600/70 bg-[#091428]/80 hover:border-cyan-300 hover:text-cyan-300",
+        chip: "border-slate-600/70 bg-[#091428]/85",
+        input:
+          "bg-[#081423]/85 border-slate-600/70 text-slate-100 placeholder:text-slate-500 focus:border-cyan-300 focus:ring-cyan-300/25",
+        footer: "border-slate-700/70",
+      }
+    : {
+        shell: "bg-slate-100 text-slate-900",
+        nav: "bg-white/85 border-slate-300/80 shadow-[0_10px_35px_rgba(15,23,42,0.08)]",
+        navItem: "text-slate-600 hover:text-sky-700",
+        navActive: "bg-sky-700 text-white shadow-[0_8px_20px_rgba(3,105,161,0.24)]",
+        panel: "bg-white/75 border-sky-200/70",
+        card: "bg-white/85 border-slate-200/90",
+        textMuted: "text-slate-700",
+        textSoft: "text-slate-500",
+        accentText: "text-sky-700",
+        primaryButton: "bg-sky-700 text-white hover:bg-sky-600",
+        secondaryButton: "border-slate-300 text-slate-800 hover:border-sky-600 hover:text-sky-700",
+        socialButton: "border-slate-300 bg-white/90 hover:border-sky-600 hover:text-sky-700",
+        chip: "border-slate-300 bg-white/90",
+        input:
+          "bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-sky-600 focus:ring-sky-500/25",
+        footer: "border-slate-300/90",
+      };
 
   return (
-    <div className={`${bg} ${text} min-h-screen transition-colors duration-500 relative`}>
-      {/* Floating Nav */}
-      <nav
-        className={`fixed top-4 left-1/2 z-50 border rounded-full px-2 py-2 flex items-center gap-1 backdrop-blur-xl ${navBg}`}
-        style={{ transform: "translateX(-50%)", transition: "all 0.3s ease" }}
-      >
-        {navItems.map((item) => (
-          <button
-            key={item}
-            onClick={() => scrollTo(item)}
-            className={`px-3 py-1.5 rounded-full text-xs font-medium capitalize transition-all duration-300 ${activeSection === item
-              ? `${accentBg} text-white shadow-lg shadow-violet-500/25`
-              : `${textSub} hover:text-violet-400`
-              }`}
-          >
-            {item}
-          </button>
-        ))}
-        <div className={`w-px h-5 mx-1 ${dark ? "bg-gray-700" : "bg-gray-300"}`} />
-        <button
-          onClick={() => setDark(!dark)}
-          className={`p-2 rounded-full transition-all duration-300 ${dark ? "bg-gray-800 text-yellow-400 hover:bg-gray-700" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-            }`}
-        >
-          {dark ? <Sun size={14} /> : <Moon size={14} />}
-        </button>
-      </nav>
-
-      {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        {/* Animated BG orbs */}
+    <div className={`${theme.shell} relative min-h-screen overflow-hidden transition-colors duration-500`}>
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
         <div
-          className="absolute w-96 h-96 rounded-full opacity-20 blur-3xl bg-violet-600"
-          style={{
-            top: "10%", left: "15%",
-            transform: `translate(${Math.sin(scrollY * 0.002) * 30}px, ${Math.cos(scrollY * 0.002) * 20}px)`,
-            transition: "transform 0.1s linear",
-          }}
+          className={`animate-aurora-a absolute -left-28 -top-24 h-[26rem] w-[26rem] rounded-full blur-3xl ${
+            dark ? "bg-cyan-400/20" : "bg-sky-400/20"
+          }`}
         />
         <div
-          className="absolute w-80 h-80 rounded-full opacity-15 blur-3xl bg-cyan-500"
-          style={{
-            bottom: "15%", right: "10%",
-            transform: `translate(${Math.cos(scrollY * 0.003) * 25}px, ${Math.sin(scrollY * 0.003) * 25}px)`,
-            transition: "transform 0.1s linear",
-          }}
+          className={`animate-aurora-b absolute -bottom-28 right-[-7rem] h-[30rem] w-[30rem] rounded-full blur-3xl ${
+            dark ? "bg-blue-500/16" : "bg-indigo-400/18"
+          }`}
         />
         <div
-          className="absolute w-64 h-64 rounded-full opacity-10 blur-3xl bg-pink-500"
+          className={`animate-grid-float absolute inset-0 ${dark ? "opacity-[0.18]" : "opacity-[0.16]"}`}
           style={{
-            top: "50%", left: "60%",
-            transform: `translate(${Math.sin(scrollY * 0.004) * 20}px, ${Math.cos(scrollY * 0.004) * 15}px)`,
-            transition: "transform 0.1s linear",
+            backgroundImage: dark
+              ? "linear-gradient(rgba(56,189,248,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.08) 1px, transparent 1px)"
+              : "linear-gradient(rgba(14,116,144,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(14,116,144,0.08) 1px, transparent 1px)",
+            backgroundSize: "56px 56px",
           }}
         />
+      </div>
 
-        <div className="text-center z-10 px-6">
-          <AnimatedSection delay={0}>
-            <div className="mb-6 inline-block">
-              <div
-                className="w-28 h-28 rounded-full bg-gradient-to-br from-violet-500 to-cyan-500 mx-auto flex items-center justify-center text-4xl shadow-2xl shadow-violet-500/30"
-                style={{ animation: "float 6s ease-in-out infinite" }}
-              >
-                👨‍💻
-              </div>
-            </div>
-          </AnimatedSection>
+      <nav className="fixed left-1/2 top-4 z-50 w-[min(1120px,calc(100%-1.5rem))] -translate-x-1/2">
+        <div className={`rounded-2xl border px-4 py-3 backdrop-blur-xl transition-colors ${theme.nav}`}>
+          <div className="flex items-center justify-between gap-3">
+            <button
+              onClick={() => scrollTo("home")}
+              className="display-font text-[11px] font-semibold uppercase tracking-[0.24em] text-cyan-300"
+            >
+              Pandu Darma
+            </button>
 
-          <AnimatedSection delay={0.15}>
-            <div className={`inline-block px-4 py-1.5 rounded-full text-xs font-medium mb-6 border ${dark ? "bg-violet-500/10 border-violet-500/30 text-violet-300" : "bg-violet-50 border-violet-200 text-violet-600"}`}>
-              ✨ Available for Freelance Work
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.3}>
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
-              Hi, I'm{" "}
-              <span className="bg-gradient-to-r from-violet-400 via-cyan-400 to-pink-400 bg-clip-text text-transparent">
-                Pandu Darma Anugrah
-              </span>
-            </h1>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.45}>
-            <p className={`text-lg md:text-xl ${textSub} max-w-xl mx-auto mb-8 leading-relaxed`}>
-              Versatile Full-Stack Engineer & Web3 Architect. I turn complex problems into shipping products.
-            </p>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.6}>
-            <div className="flex items-center justify-center gap-4 mb-10">
-              <button onClick={() => scrollTo("projects")} className={`${accentBg} text-white px-6 py-3 rounded-full font-medium text-sm hover:shadow-lg hover:shadow-violet-500/30 transition-all duration-300 hover:-translate-y-0.5`}>
-                View Projects
-              </button>
-              <button onClick={() => scrollTo("contact")} className={`border ${dark ? "border-gray-700 hover:border-violet-500" : "border-gray-300 hover:border-violet-400"} px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 hover:-translate-y-0.5`}>
-                Contact Me
-              </button>
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.75}>
-            <div className="flex items-center justify-center gap-4">
-              {[
-                { Icon: Github, href: "https://github.com/panzauto46-bot" },
-                { Icon: Linkedin, href: "https://www.linkedin.com/in/pandu-darma-195a621b2/" },
-                { Icon: Twitter, href: "https://x.com/BTC_SEANA" }
-              ].map(({ Icon, href }, i) => (
-                <a key={i} href={href} target="_blank" rel="noopener noreferrer" className={`p-3 rounded-full border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${dark ? "border-gray-800 bg-gray-900/50 hover:border-violet-500 hover:shadow-violet-500/10" : "border-gray-200 bg-white hover:border-violet-400 hover:shadow-violet-500/10"}`}>
-                  <Icon size={18} />
-                </a>
+            <div className="hidden md:flex items-center gap-1">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollTo(item.id)}
+                  className={`rounded-full px-3 py-1.5 text-xs font-semibold tracking-[0.08em] transition-all duration-300 ${
+                    activeSection === item.id ? theme.navActive : theme.navItem
+                  }`}
+                >
+                  {item.label}
+                </button>
               ))}
             </div>
-          </AnimatedSection>
 
-          <AnimatedSection delay={0.9}>
-            <button onClick={() => scrollTo("about")} className={`mt-16 ${textSub} flex flex-col items-center gap-2 mx-auto`} style={{ animation: "bounce 2s infinite" }}>
-              <span className="text-xs">Scroll Down</span>
-              <ChevronDown size={16} />
-            </button>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-24 px-6">
-        <div className="max-w-4xl mx-auto">
-          <AnimatedSection>
-            <div className="text-center mb-16">
-              <span className={`text-xs font-medium uppercase tracking-widest ${accent}`}>About Me</span>
-              <h2 className="text-3xl md:text-4xl font-bold mt-2">Passionate About Code & Design</h2>
+            <div className="flex items-center gap-2">
+              <a
+                href="mailto:pandudargah202@gmail.com"
+                className={`hidden lg:flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] ${theme.chip}`}
+              >
+                <Mail size={12} />
+                pandudargah202@gmail.com
+              </a>
+              <button
+                onClick={() => setDark(!dark)}
+                aria-label="Toggle theme"
+                className={`rounded-full border p-2 transition-colors ${theme.secondaryButton}`}
+              >
+                {dark ? <Sun size={14} /> : <Moon size={14} />}
+              </button>
             </div>
-          </AnimatedSection>
+          </div>
 
-          <AnimatedSection delay={0.1}>
-            <div className={`p-6 rounded-2xl border backdrop-blur-sm ${card}`}>
-              <p className={`${textSub} leading-relaxed text-sm`}>
-                I am a Versatile Full-Stack Engineer & Web3 Architect with a deep focus on <strong>Autonomous AI Agents</strong> and <strong>Multi-Chain DeFi Ecosystems</strong>.
-              </p>
-              <p className={`${textSub} leading-relaxed text-sm mt-4`}>
-                My work spans from engineering **AI-driven Operating Systems** and **Financial Assistants** (like <em>agent.os</em> & <em>VibeAgent</em>) to architecting **Institutional Treasury Systems** and **RWA Financing Platforms** (like <em>StableFlow</em> & <em>CrediProcure</em>).
-              </p>
-              <p className={`${textSub} leading-relaxed text-sm mt-4`}>
-                I specialize in merging **Artificial Intelligence** with **Blockchain Technology** across Solana, BNB Chain, and EVM networks to build systems that are not just functional, but revolutionary.
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section id="skills" className="py-24 px-6">
-        <div className="max-w-4xl mx-auto">
-          <AnimatedSection>
-            <div className="text-center mb-16">
-              <span className={`text-xs font-medium uppercase tracking-widest ${accent}`}>My Skills</span>
-              <h2 className="text-3xl md:text-4xl font-bold mt-2">Technologies I Work With</h2>
-            </div>
-          </AnimatedSection>
-
-          <div className="grid gap-4">
-            {skills.map((skill, i) => (
-              <AnimatedSection key={i} delay={i * 0.08}>
-                <div className={`p-4 rounded-2xl border backdrop-blur-sm ${card} transition-all duration-300 hover:-translate-y-0.5`}>
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-3">
-                      <div className={`p-2 rounded-lg ${dark ? "bg-violet-500/10 text-violet-400" : "bg-violet-50 text-violet-600"}`}>
-                        {skill.icon}
-                      </div>
-                      <span className="font-medium text-sm">{skill.name}</span>
-                    </div>
-                    <span className={`text-xs font-semibold ${accent}`}>{skill.level}%</span>
-                  </div>
-                  <div className={`h-1.5 rounded-full ${dark ? "bg-gray-800" : "bg-gray-100"} overflow-hidden`}>
-                    <div
-                      className="h-full rounded-full bg-gradient-to-r from-violet-500 to-cyan-500"
-                      style={{
-                        width: `${skill.level}%`,
-                        transition: "width 1.5s cubic-bezier(0.16, 1, 0.3, 1)",
-                      }}
-                    />
-                  </div>
-                </div>
-              </AnimatedSection>
+          <div className="no-scrollbar mt-3 flex gap-2 overflow-x-auto pb-1 md:hidden">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollTo(item.id)}
+                className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold tracking-[0.08em] transition-all duration-300 ${
+                  activeSection === item.id ? theme.navActive : theme.navItem
+                }`}
+              >
+                {item.label}
+              </button>
             ))}
           </div>
+          <div className={`mt-2 h-px overflow-hidden rounded-full ${dark ? "bg-cyan-200/10" : "bg-sky-900/10"}`}>
+            <div className={`run-line h-full w-20 ${dark ? "bg-cyan-300/70" : "bg-sky-700/60"}`} />
+          </div>
         </div>
-      </section >
+      </nav>
 
-      {/* Projects Section */}
-      < section id="projects" className="py-24 px-6" >
-        <div className="max-w-5xl mx-auto">
-          <AnimatedSection>
-            <div className="text-center mb-16">
-              <span className={`text-xs font-medium uppercase tracking-widest ${accent}`}>Portfolio</span>
-              <h2 className="text-3xl md:text-4xl font-bold mt-2">Featured Projects</h2>
-              <p className={`${textSub} mt-3 text-sm max-w-lg mx-auto`}>
-                A curated selection of projects showcasing my expertise in design, development, and problem-solving.
+      <main className="pt-20">
+        <section id="home" className="relative min-h-screen overflow-hidden px-4 py-20 sm:px-6 lg:px-8">
+          <SectionBackdrop image={sectionBackgrounds.home} dark={dark} />
+          <div
+            className="pointer-events-none absolute inset-y-0 left-0 w-[62%]"
+            style={{
+              background: dark
+                ? "linear-gradient(125deg, rgba(4,10,20,0.92) 0%, rgba(4,10,20,0.76) 50%, rgba(4,10,20,0.0) 100%)"
+                : "linear-gradient(125deg, rgba(248,250,252,0.92) 0%, rgba(248,250,252,0.78) 50%, rgba(248,250,252,0.0) 100%)",
+            }}
+          />
+
+          <div className="relative z-10 mx-auto flex min-h-[calc(100vh-9rem)] max-w-6xl flex-col justify-center">
+            <AnimatedSection className="max-w-3xl">
+              <span
+                className={`inline-flex rounded-full border px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] ${
+                  dark ? "border-cyan-400/40 bg-cyan-500/10 text-cyan-200" : "border-sky-300 bg-sky-50 text-sky-700"
+                }`}
+              >
+                Available for freelance work
+              </span>
+              <h1 className="display-font mt-6 text-4xl font-bold leading-tight sm:text-6xl lg:text-7xl">
+                Pandu Darma
+                <br />
+                <span className={theme.accentText}>Anugrah</span>
+              </h1>
+              <p className={`mt-6 max-w-2xl text-base leading-relaxed sm:text-lg ${theme.textMuted}`}>
+                Versatile Full-Stack Engineer and Web3 Architect. I turn complex technical systems into products that
+                ship, scale, and generate impact.
               </p>
-            </div>
-          </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project, i) => (
-              <AnimatedSection key={i} delay={i * 0.1}>
-                <div
-                  className={`group rounded-2xl border overflow-hidden backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${card} ${hoveredProject === i ? (dark ? "shadow-violet-500/10 border-violet-500/30" : "shadow-violet-500/15 border-violet-300") : ""
-                    }`}
-                  onMouseEnter={() => setHoveredProject(i)}
-                  onMouseLeave={() => setHoveredProject(null)}
+              <div className="mt-8 flex flex-wrap gap-3">
+                <button
+                  onClick={() => scrollTo("projects")}
+                  className={`rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${theme.primaryButton}`}
                 >
-                  <div className={`h-40 bg-gradient-to-br ${project.color} flex items-center justify-center text-5xl relative overflow-hidden`}>
-                    <div className="absolute inset-0 bg-black/10" />
-                    {(project.image.startsWith("/") || project.image.startsWith("http")) ? (
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                    ) : (
-                      <span className="relative z-10 group-hover:scale-125 transition-transform duration-500">{project.image}</span>
-                    )}
-                    {/* Overlay buttons */}
-                    <div className="absolute inset-0 z-20 bg-black/60 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                      <button
-                        onClick={() => setPreviewProject(project)}
-                        className="p-2.5 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors text-white"
-                      >
-                        <Eye size={16} />
-                      </button>
-                      <a href={project.github} className="p-2.5 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors text-white">
-                        <Github size={16} />
-                      </a>
-                      <a href={project.link} className="p-2.5 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors text-white">
-                        <ExternalLink size={16} />
-                      </a>
+                  View Portfolio
+                </button>
+                <button
+                  onClick={() => scrollTo("contact")}
+                  className={`rounded-full border px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${theme.secondaryButton}`}
+                >
+                  Contact Me
+                </button>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.12} className="mt-10">
+              <div className="flex flex-wrap items-center gap-3">
+                {socialLinks.map(({ icon: Icon, href, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-medium transition-all duration-300 hover:-translate-y-0.5 ${theme.socialButton}`}
+                  >
+                    <Icon size={14} />
+                    {label}
+                  </a>
+                ))}
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.18} className="mt-10">
+              <button
+                onClick={() => scrollTo("about")}
+                className={`group inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] ${theme.textSoft}`}
+              >
+                Scroll
+                <ChevronDown size={14} className="animate-bounce-soft" />
+              </button>
+            </AnimatedSection>
+          </div>
+        </section>
+
+        <section id="about" className="relative min-h-screen overflow-hidden px-4 py-20 sm:px-6 lg:px-8">
+          <SectionBackdrop image={sectionBackgrounds.about} dark={dark} />
+          <div className="relative z-10 mx-auto max-w-4xl items-center">
+            <AnimatedSection>
+              <div className={`rounded-3xl border p-8 backdrop-blur-md sm:p-10 ${theme.panel}`}>
+                <p className={`text-xs font-semibold uppercase tracking-[0.2em] ${theme.accentText}`}>About</p>
+                <h2 className="display-font mt-3 text-3xl font-bold sm:text-4xl">Passionate About Code and Design</h2>
+                <p className={`mt-6 text-sm leading-relaxed sm:text-base ${theme.textMuted}`}>
+                  I am a Versatile Full-Stack Engineer and Web3 Architect with a deep focus on <strong>Autonomous AI
+                  Agents</strong> and <strong>Multi-Chain DeFi Ecosystems</strong>.
+                </p>
+                <p className={`mt-4 text-sm leading-relaxed sm:text-base ${theme.textMuted}`}>
+                  My work spans from engineering AI-driven Operating Systems and Financial Assistants (like <em>agent.os</em>
+                  and <em>VibeAgent</em>) to architecting Institutional Treasury Systems and RWA Financing Platforms
+                  (like <em>StableFlow</em> and <em>CrediProcure</em>).
+                </p>
+                <p className={`mt-4 text-sm leading-relaxed sm:text-base ${theme.textMuted}`}>
+                  I specialize in merging Artificial Intelligence with Blockchain Technology across Solana, BNB Chain,
+                  and EVM networks to build systems that are not just functional, but revolutionary.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <span className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs ${theme.chip}`}>
+                    <Mail size={14} />
+                    pandudargah202@gmail.com
+                  </span>
+                  <span className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs ${theme.chip}`}>
+                    <MapPin size={14} />
+                    Indonesia
+                  </span>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
+
+        <section id="skills" className="relative min-h-screen overflow-hidden px-4 py-20 sm:px-6 lg:px-8">
+          <SectionBackdrop image={sectionBackgrounds.skills} dark={dark} />
+          <div className="relative z-10 mx-auto max-w-6xl">
+            <AnimatedSection>
+              <div className="mb-10">
+                <p className={`text-xs font-semibold uppercase tracking-[0.2em] ${theme.accentText}`}>Resume</p>
+                <h2 className="display-font mt-3 text-3xl font-bold sm:text-4xl">Software Skills and Capabilities</h2>
+              </div>
+            </AnimatedSection>
+
+            <div className="grid gap-8 xl:grid-cols-[1.15fr_0.85fr]">
+              <div className="space-y-4">
+                {skills.map((skill, index) => (
+                  <AnimatedSection key={skill.name} delay={index * 0.06}>
+                    <div className={`rounded-2xl border p-5 backdrop-blur-md transition-all duration-300 ${theme.card}`}>
+                      <div className="mb-3 flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <span
+                            className={`inline-flex h-8 w-8 items-center justify-center rounded-lg ${
+                              dark ? "bg-cyan-400/12 text-cyan-200" : "bg-sky-100 text-sky-700"
+                            }`}
+                          >
+                            {skill.icon}
+                          </span>
+                          <span className="text-sm font-semibold">{skill.name}</span>
+                        </div>
+                        <span className={`text-xs font-semibold ${theme.accentText}`}>{skill.level}%</span>
+                      </div>
+                      <div className={`h-2 overflow-hidden rounded-full ${dark ? "bg-slate-800" : "bg-slate-200"}`}>
+                        <div
+                          className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-[width] duration-[1200ms]"
+                          style={{ width: `${skill.level}%` }}
+                        />
+                      </div>
                     </div>
+                  </AnimatedSection>
+                ))}
+              </div>
+
+              <div className="space-y-5">
+                <AnimatedSection delay={0.16}>
+                  <div className={`rounded-2xl border p-6 backdrop-blur-md ${theme.panel}`}>
+                    <h3 className="display-font text-lg font-semibold">What Can I Do?</h3>
+                    <ul className={`mt-4 space-y-2 text-sm leading-relaxed ${theme.textMuted}`}>
+                      <li>Autonomous AI Agent System Architecture</li>
+                      <li>Multi-Chain dApp and DeFi Product Engineering</li>
+                      <li>Smart Contract and Treasury Infrastructure Design</li>
+                      <li>Crypto Trading Analytics and Monitoring Platforms</li>
+                    </ul>
                   </div>
-                  <div className="p-5">
-                    <h3 className="font-semibold text-base mb-2">{project.title}</h3>
-                    <p className={`text-xs ${textSub} leading-relaxed mb-4`}>{project.desc}</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {project.tags.map((tag, j) => (
-                        <span key={j} className={`text-xs px-2.5 py-1 rounded-full font-medium ${dark ? "bg-gray-800 text-gray-300" : "bg-gray-100 text-gray-600"}`}>
-                          {tag}
+                </AnimatedSection>
+
+                <AnimatedSection delay={0.22}>
+                  <div className={`rounded-2xl border p-6 backdrop-blur-md ${theme.card}`}>
+                    <h3 className="display-font text-lg font-semibold">Design and Build Focus</h3>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {[
+                        "AI Agents",
+                        "Web3 Ecosystem",
+                        "Fintech",
+                        "Automation",
+                        "RWA",
+                        "Product Strategy",
+                        "Security",
+                        "Performance",
+                      ].map((item) => (
+                        <span key={item} className={`rounded-full border px-3 py-1.5 text-xs font-medium ${theme.chip}`}>
+                          {item}
                         </span>
                       ))}
                     </div>
                   </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section >
-
-      {/* Project Preview Modal */}
-      {
-        previewProject && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-6"
-            style={{ animation: "fadeIn 0.3s ease" }}
-            onClick={() => setPreviewProject(null)}
-          >
-            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
-            <div
-              className={`relative w-full max-w-2xl rounded-3xl border overflow-hidden ${card}`}
-              style={{ animation: "zoomIn 0.4s cubic-bezier(0.16, 1, 0.3, 1)" }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className={`h-52 bg-gradient-to-br ${previewProject.color} flex items-center justify-center text-7xl relative`}>
-                <div className="absolute inset-0 bg-black/10" />
-                {(previewProject.image.startsWith("/") || previewProject.image.startsWith("http")) ? (
-                  <img
-                    src={previewProject.image}
-                    alt={previewProject.title}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <span className="relative z-10">{previewProject.image}</span>
-                )}
-                <button
-                  onClick={() => setPreviewProject(null)}
-                  className="absolute top-4 right-4 w-8 h-8 bg-black/30 backdrop-blur-sm text-white rounded-full flex items-center justify-center text-sm hover:bg-black/50 transition-colors"
-                >
-                  ✕
-                </button>
-              </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-bold mb-3">{previewProject.title}</h3>
-                <p className={`${textSub} leading-relaxed text-sm mb-6`}>{previewProject.desc}</p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {previewProject.tags.map((tag, j) => (
-                    <span key={j} className={`text-xs px-3 py-1.5 rounded-full font-medium ${dark ? "bg-violet-500/10 text-violet-300 border border-violet-500/20" : "bg-violet-50 text-violet-600 border border-violet-200"}`}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-3">
-                  <a href={previewProject.link} className={`${accentBg} text-white px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 hover:shadow-lg hover:shadow-violet-500/30 transition-all`}>
-                    <ExternalLink size={14} /> Live Demo
-                  </a>
-                  <a href={previewProject.github} className={`border ${dark ? "border-gray-700" : "border-gray-300"} px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 transition-all hover:-translate-y-0.5`}>
-                    <Github size={14} /> Source Code
-                  </a>
-                </div>
+                </AnimatedSection>
               </div>
             </div>
           </div>
-        )
-      }
+        </section>
+        <section id="projects" className="relative min-h-screen overflow-hidden px-4 py-20 sm:px-6 lg:px-8">
+          <SectionBackdrop image={sectionBackgrounds.projects} dark={dark} />
+          <div className="relative z-10 mx-auto max-w-6xl">
+            <AnimatedSection>
+              <div className="mb-10">
+                <p className={`text-xs font-semibold uppercase tracking-[0.2em] ${theme.accentText}`}>Portfolio</p>
+                <h2 className="display-font mt-3 text-3xl font-bold sm:text-4xl">Featured Projects</h2>
+                <p className={`mt-4 max-w-2xl text-sm leading-relaxed ${theme.textMuted}`}>
+                  A curated selection of projects showcasing expertise in design, development, and end-to-end product
+                  execution.
+                </p>
+              </div>
+            </AnimatedSection>
 
-      {/* Experience & Education */}
-      <section id="experience" className="py-24 px-6">
-        <div className="max-w-4xl mx-auto">
-          <AnimatedSection>
-            <div className="text-center mb-16">
-              <span className={`text-xs font-medium uppercase tracking-widest ${accent}`}>Background</span>
-              <h2 className="text-3xl md:text-4xl font-bold mt-2">Experience & Education</h2>
-            </div>
-          </AnimatedSection>
-
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Experience */}
-            <div>
-              <AnimatedSection>
-                <div className="flex items-center gap-2 mb-6">
-                  <Briefcase size={18} className="text-violet-400" />
-                  <h3 className="text-lg font-semibold">Work Experience</h3>
-                </div>
-              </AnimatedSection>
-              <div className="space-y-4">
-                {experiences.map((exp, i) => (
-                  <AnimatedSection key={i} delay={i * 0.12}>
-                    <div className={`p-5 rounded-2xl border backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 ${card} relative`}>
-                      <div className={`absolute top-5 left-5 w-2 h-2 rounded-full ${accentBg}`} />
-                      <div className="pl-5">
-
-                        <h4 className="font-semibold text-sm mt-1">{exp.role}</h4>
-                        <p className={`text-xs ${textSub} mt-0.5`}>{exp.company}</p>
-                        <p className={`text-xs ${textSub} mt-2 leading-relaxed`}>{exp.desc}</p>
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {projects.map((project, index) => (
+                <AnimatedSection key={project.title} delay={index * 0.04}>
+                  <article
+                    className={`group overflow-hidden rounded-2xl border backdrop-blur-md transition-all duration-300 hover:-translate-y-1 ${
+                      hoveredProject === index
+                        ? `${theme.panel} shadow-[0_16px_35px_rgba(8,145,178,0.22)]`
+                        : theme.card
+                    }`}
+                    onMouseEnter={() => setHoveredProject(index)}
+                    onMouseLeave={() => setHoveredProject(null)}
+                  >
+                    <div className={`relative h-44 overflow-hidden bg-gradient-to-br ${project.color}`}>
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-black/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                      <div className="absolute inset-0 z-10 flex items-center justify-center gap-2 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                        <button
+                          onClick={() => setPreviewProject(project)}
+                          className="rounded-full border border-white/50 bg-white/20 p-2 text-white backdrop-blur-sm transition-colors hover:bg-white/35"
+                          aria-label={`Preview ${project.title}`}
+                        >
+                          <Eye size={14} />
+                        </button>
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="rounded-full border border-white/50 bg-white/20 p-2 text-white backdrop-blur-sm transition-colors hover:bg-white/35"
+                          aria-label={`Open ${project.title} source`}
+                        >
+                          <Github size={14} />
+                        </a>
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="rounded-full border border-white/50 bg-white/20 p-2 text-white backdrop-blur-sm transition-colors hover:bg-white/35"
+                          aria-label={`Open ${project.title} demo`}
+                        >
+                          <ExternalLink size={14} />
+                        </a>
                       </div>
                     </div>
-                  </AnimatedSection>
-                ))}
-              </div>
-            </div>
 
-            {/* Education */}
-            <div>
-              <AnimatedSection>
-                <div className="flex items-center gap-2 mb-6">
-                  <GraduationCap size={18} className="text-cyan-400" />
-                  <h3 className="text-lg font-semibold">Education</h3>
-                </div>
-              </AnimatedSection>
-              <div className="space-y-4">
-                {education.map((edu, i) => (
-                  <AnimatedSection key={i} delay={i * 0.12}>
-                    <div className={`p-5 rounded-2xl border backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 ${card} relative`}>
-                      <div className="absolute top-5 left-5 w-2 h-2 rounded-full bg-cyan-500" />
-                      <div className="pl-5">
-
-                        <h4 className="font-semibold text-sm mt-1">{edu.degree}</h4>
-                        <p className={`text-xs ${textSub} mt-0.5`}>{edu.school}</p>
-                        <p className={`text-xs ${textSub} mt-2 leading-relaxed`}>{edu.desc}</p>
+                    <div className="p-5">
+                      <h3 className="display-font text-lg font-semibold">{project.title}</h3>
+                      <p className={`mt-2 text-sm leading-relaxed ${theme.textMuted}`}>{project.desc}</p>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {project.tags.map((tag) => (
+                          <span key={tag} className={`rounded-full border px-2.5 py-1 text-[11px] font-medium ${theme.chip}`}>
+                            {tag}
+                          </span>
+                        ))}
                       </div>
                     </div>
-                  </AnimatedSection>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-24 px-6">
-        <div className="max-w-2xl mx-auto">
-          <AnimatedSection>
-            <div className="text-center mb-12">
-              <span className={`text-xs font-medium uppercase tracking-widest ${accent}`}>Get In Touch</span>
-              <h2 className="text-3xl md:text-4xl font-bold mt-2">Let's Work Together</h2>
-              <p className={`${textSub} mt-3 text-sm`}>
-                Have a project in mind? Feel free to reach out and let's create something amazing.
-              </p>
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.1}>
-            <div className="flex flex-wrap justify-center gap-4 mb-10">
-              {[
-                { icon: <Mail size={16} />, label: "pandudargah202@gmail.com", color: "violet" },
-                { icon: <Github size={16} />, label: "panzauto46-bot", color: "cyan" },
-                { icon: <MapPin size={16} />, label: "Indonesia", color: "pink" },
-              ].map((item, i) => (
-                <div key={i} className={`flex items-center gap-2 px-4 py-2.5 rounded-full border text-sm ${card} transition-all hover:-translate-y-0.5`}>
-                  <span className={accent}>{item.icon}</span>
-                  {item.label}
-                </div>
+                  </article>
+                </AnimatedSection>
               ))}
             </div>
-          </AnimatedSection>
+          </div>
+        </section>
 
-          <AnimatedSection delay={0.2}>
-            <form
-              action="https://formsubmit.co/pandudargah202@gmail.com"
-              method="POST"
-              className={`p-8 rounded-3xl border backdrop-blur-sm ${card}`}
-            >
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_subject" value="New submission from Portfolio!" />
-              <input type="hidden" name="_template" value="table" />
+        <section id="experience" className="relative min-h-screen overflow-hidden px-4 py-20 sm:px-6 lg:px-8">
+          <SectionBackdrop image={sectionBackgrounds.experience} dark={dark} />
+          <div className="relative z-10 mx-auto max-w-6xl">
+            <AnimatedSection>
+              <div className="mb-10">
+                <p className={`text-xs font-semibold uppercase tracking-[0.2em] ${theme.accentText}`}>Experience</p>
+                <h2 className="display-font mt-3 text-3xl font-bold sm:text-4xl">Background and Education</h2>
+              </div>
+            </AnimatedSection>
 
-              <div className="grid md:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label className={`text-xs font-medium ${textSub} mb-1.5 block`}>Full Name</label>
+            <div className="grid gap-8 lg:grid-cols-2">
+              <div className={`rounded-3xl border p-6 backdrop-blur-md sm:p-8 ${theme.panel}`}>
+                <div className="mb-6 flex items-center gap-2">
+                  <Briefcase size={18} className={dark ? "text-cyan-300" : "text-sky-700"} />
+                  <h3 className="display-font text-xl font-semibold">Work Experience</h3>
+                </div>
+                <div className="space-y-4">
+                  {experiences.map((item, index) => (
+                    <AnimatedSection key={item.role} delay={index * 0.06}>
+                      <div className={`rounded-2xl border p-5 ${theme.card}`}>
+                        <p className={`text-xs font-semibold uppercase tracking-[0.15em] ${theme.accentText}`}>{item.year}</p>
+                        <h4 className="mt-2 text-base font-semibold">{item.role}</h4>
+                        <p className={`mt-1 text-sm ${theme.textSoft}`}>{item.company}</p>
+                        <p className={`mt-3 text-sm leading-relaxed ${theme.textMuted}`}>{item.desc}</p>
+                      </div>
+                    </AnimatedSection>
+                  ))}
+                </div>
+              </div>
+
+              <div className={`rounded-3xl border p-6 backdrop-blur-md sm:p-8 ${theme.card}`}>
+                <div className="mb-6 flex items-center gap-2">
+                  <GraduationCap size={18} className={dark ? "text-amber-300" : "text-amber-700"} />
+                  <h3 className="display-font text-xl font-semibold">Education</h3>
+                </div>
+                <div className="space-y-4">
+                  {education.map((item, index) => (
+                    <AnimatedSection key={item.degree} delay={index * 0.06}>
+                      <div className={`rounded-2xl border p-5 ${theme.card}`}>
+                        <p className={`text-xs font-semibold uppercase tracking-[0.15em] ${theme.accentText}`}>{item.year}</p>
+                        <h4 className="mt-2 text-base font-semibold">{item.degree}</h4>
+                        <p className={`mt-1 text-sm ${theme.textSoft}`}>{item.school}</p>
+                        <p className={`mt-3 text-sm leading-relaxed ${theme.textMuted}`}>{item.desc}</p>
+                      </div>
+                    </AnimatedSection>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" className="relative min-h-screen overflow-hidden px-4 py-20 sm:px-6 lg:px-8">
+          <SectionBackdrop image={sectionBackgrounds.contact} dark={dark} />
+          <div className="relative z-10 mx-auto max-w-4xl">
+            <AnimatedSection>
+              <div className="mb-10 text-center">
+                <p className={`text-xs font-semibold uppercase tracking-[0.2em] ${theme.accentText}`}>Contact</p>
+                <h2 className="display-font mt-3 text-3xl font-bold sm:text-4xl">Let's Work Together</h2>
+                <p className={`mx-auto mt-4 max-w-xl text-sm leading-relaxed ${theme.textMuted}`}>
+                  Have a project in mind? Send your details and I will get back to you with the best execution plan.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.06}>
+              <div className="mb-8 flex flex-wrap justify-center gap-3">
+                <span className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm ${theme.chip}`}>
+                  <Mail size={15} />
+                  pandudargah202@gmail.com
+                </span>
+                <span className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm ${theme.chip}`}>
+                  <Github size={15} />
+                  panzauto46-bot
+                </span>
+                <span className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm ${theme.chip}`}>
+                  <MapPin size={15} />
+                  Indonesia
+                </span>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.1}>
+              <form
+                action="https://formsubmit.co/pandudargah202@gmail.com"
+                method="POST"
+                className={`rounded-3xl border p-6 backdrop-blur-md sm:p-8 ${theme.panel}`}
+              >
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_subject" value="New submission from Portfolio!" />
+                <input type="hidden" name="_template" value="table" />
+
+                <div className="mb-4 grid gap-4 md:grid-cols-2">
+                  <div>
+                    <label className={`mb-1.5 block text-xs font-semibold uppercase tracking-[0.12em] ${theme.textSoft}`}>
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      placeholder="John Doe"
+                      className={`w-full rounded-xl border px-4 py-3 text-sm outline-none transition-colors focus:ring-2 ${theme.input}`}
+                    />
+                  </div>
+                  <div>
+                    <label className={`mb-1.5 block text-xs font-semibold uppercase tracking-[0.12em] ${theme.textSoft}`}>
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      placeholder="john@example.com"
+                      className={`w-full rounded-xl border px-4 py-3 text-sm outline-none transition-colors focus:ring-2 ${theme.input}`}
+                    />
+                  </div>
+                </div>
+
+                <div className="mb-4">
+                  <label className={`mb-1.5 block text-xs font-semibold uppercase tracking-[0.12em] ${theme.textSoft}`}>
+                    Subject
+                  </label>
                   <input
                     type="text"
-                    name="name"
+                    name="subject"
                     required
-                    placeholder="John Doe"
-                    className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 ${dark ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500" : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400"}`}
+                    placeholder="Project Discussion"
+                    className={`w-full rounded-xl border px-4 py-3 text-sm outline-none transition-colors focus:ring-2 ${theme.input}`}
                   />
                 </div>
-                <div>
-                  <label className={`text-xs font-medium ${textSub} mb-1.5 block`}>Email Address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="john@example.com"
-                    className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 ${dark ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500" : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400"}`}
-                  />
-                </div>
-              </div>
-              <div className="mb-4">
-                <label className={`text-xs font-medium ${textSub} mb-1.5 block`}>Subject</label>
-                <input
-                  type="text"
-                  name="subject"
-                  required
-                  placeholder="Project Discussion"
-                  className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 ${dark ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500" : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400"}`}
-                />
-              </div>
-              <div className="mb-6">
-                <label className={`text-xs font-medium ${textSub} mb-1.5 block`}>Message</label>
-                <textarea
-                  rows={4}
-                  name="message"
-                  required
-                  placeholder="Tell me about your project..."
-                  className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-300 resize-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 ${dark ? "bg-gray-800/50 border-gray-700 text-white placeholder-gray-500" : "bg-gray-50 border-gray-200 text-gray-900 placeholder-gray-400"}`}
-                />
-              </div>
-              <button type="submit" className={`w-full ${accentBg} text-white py-3.5 rounded-xl font-medium text-sm hover:shadow-lg hover:shadow-violet-500/30 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0`}>
-                Send Message ✉️
-              </button>
-            </form>
-          </AnimatedSection>
-        </div>
-      </section>
 
-      {/* Footer */}
-      <footer className={`py-8 px-6 border-t ${dark ? "border-gray-800" : "border-gray-200"}`}>
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className={`text-xs ${textSub}`}>© 2026 Pandu Darma Anugrah. Crafted with ❤️ and lots of ☕</p>
+                <div className="mb-6">
+                  <label className={`mb-1.5 block text-xs font-semibold uppercase tracking-[0.12em] ${theme.textSoft}`}>
+                    Message
+                  </label>
+                  <textarea
+                    rows={5}
+                    name="message"
+                    required
+                    placeholder="Tell me about your project..."
+                    className={`w-full resize-none rounded-xl border px-4 py-3 text-sm outline-none transition-colors focus:ring-2 ${theme.input}`}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className={`w-full rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${theme.primaryButton}`}
+                >
+                  Send Message
+                </button>
+              </form>
+            </AnimatedSection>
+          </div>
+        </section>
+      </main>
+
+      <footer className={`border-t px-4 py-8 sm:px-6 lg:px-8 ${theme.footer}`}>
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 md:flex-row">
+          <p className={`text-xs ${theme.textSoft}`}>© 2026 Pandu Darma Anugrah. Crafted with focus and consistency.</p>
           <div className="flex items-center gap-3">
-            {[
-              { Icon: Github, href: "https://github.com/panzauto46-bot" },
-              { Icon: Linkedin, href: "https://www.linkedin.com/in/pandu-darma-195a621b2/" },
-              { Icon: Twitter, href: "https://x.com/BTC_SEANA" }
-            ].map(({ Icon, href }, i) => (
-              <a key={i} href={href} target="_blank" rel="noopener noreferrer" className={`${textSub} hover:text-violet-400 transition-colors`}>
-                <Icon size={16} />
+            {socialLinks.map(({ icon: Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`rounded-full border p-2 transition-colors ${theme.socialButton}`}
+                aria-label={label}
+              >
+                <Icon size={15} />
               </a>
             ))}
           </div>
         </div>
       </footer>
 
-      {/* Back to Top */}
+      {previewProject && (
+        <div
+          className="fixed inset-0 z-[70] flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setPreviewProject(null)}
+        >
+          <div className="absolute inset-0 bg-black/75 backdrop-blur-sm" />
+          <div
+            className={`relative w-full max-w-3xl overflow-hidden rounded-3xl border ${theme.panel}`}
+            onClick={(event) => event.stopPropagation()}
+            style={{ animation: "zoomIn 0.35s cubic-bezier(0.16, 1, 0.3, 1)" }}
+          >
+            <div className={`relative h-56 bg-gradient-to-br ${previewProject.color}`}>
+              <img src={previewProject.image} alt={previewProject.title} className="h-full w-full object-cover" />
+              <button
+                onClick={() => setPreviewProject(null)}
+                className="absolute right-4 top-4 rounded-full border border-white/55 bg-black/35 px-3 py-1 text-sm text-white backdrop-blur-sm"
+              >
+                Close
+              </button>
+            </div>
+            <div className="p-6 sm:p-8">
+              <h3 className="display-font text-2xl font-bold">{previewProject.title}</h3>
+              <p className={`mt-3 text-sm leading-relaxed ${theme.textMuted}`}>{previewProject.desc}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {previewProject.tags.map((tag) => (
+                  <span key={tag} className={`rounded-full border px-3 py-1.5 text-xs font-medium ${theme.chip}`}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={previewProject.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-colors ${theme.primaryButton}`}
+                >
+                  <ExternalLink size={14} />
+                  Live Demo
+                </a>
+                <a
+                  href={previewProject.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold transition-colors ${theme.secondaryButton}`}
+                >
+                  <Github size={14} />
+                  Source Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
-
-      {/* Global Animations */}
       <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-15px); }
+        * {
+          scroll-behavior: smooth;
         }
-        @keyframes bounce {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(8px); }
+        .no-scrollbar {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
         }
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        @keyframes auroraA {
+          0% {
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+          50% {
+            transform: translate3d(8%, 6%, 0) scale(1.06);
+          }
+          100% {
+            transform: translate3d(0, 12%, 0) scale(0.98);
+          }
+        }
+        .animate-aurora-a {
+          animation: auroraA 22s ease-in-out infinite alternate;
+        }
+        @keyframes auroraB {
+          0% {
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+          50% {
+            transform: translate3d(-8%, -5%, 0) scale(1.04);
+          }
+          100% {
+            transform: translate3d(-2%, 6%, 0) scale(0.96);
+          }
+        }
+        .animate-aurora-b {
+          animation: auroraB 26s ease-in-out infinite alternate;
+        }
+        @keyframes gridFloat {
+          0% {
+            transform: translate3d(0, 0, 0);
+          }
+          50% {
+            transform: translate3d(-14px, -10px, 0);
+          }
+          100% {
+            transform: translate3d(0, -20px, 0);
+          }
+        }
+        .animate-grid-float {
+          animation: gridFloat 20s linear infinite;
+        }
+        @keyframes bgDrift {
+          0% {
+            transform: scale(1.08) translate3d(0, 0, 0);
+          }
+          50% {
+            transform: scale(1.04) translate3d(-1.1%, 1%, 0);
+          }
+          100% {
+            transform: scale(1) translate3d(0, 0, 0);
+          }
+        }
+        .animate-bg-drift {
+          animation: bgDrift 18s ease-in-out infinite alternate;
+          transform-origin: center;
+        }
+        @keyframes runLine {
+          0% {
+            opacity: 0;
+            transform: translateX(-140%);
+          }
+          15% {
+            opacity: 1;
+          }
+          85% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+            transform: translateX(420%);
+          }
+        }
+        .run-line {
+          animation: runLine 4.8s linear infinite;
+          will-change: transform;
         }
         @keyframes zoomIn {
-          from { opacity: 0; transform: scale(0.85); }
-          to { opacity: 1; transform: scale(1); }
+          from {
+            opacity: 0;
+            transform: scale(0.88);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
         }
-        * { scroll-behavior: smooth; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #7c3aed; border-radius: 999px; }
+        @keyframes bounceSoft {
+          0%,
+          100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(6px);
+          }
+        }
+        .animate-bounce-soft {
+          animation: bounceSoft 2s ease-in-out infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-aurora-a,
+          .animate-aurora-b,
+          .animate-grid-float,
+          .animate-bg-drift,
+          .run-line,
+          .animate-bounce-soft {
+            animation: none !important;
+          }
+        }
       `}</style>
-    </div >
+    </div>
   );
 }
+

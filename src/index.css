@@ -1,3 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  background: #020712;
+  color: #f8fafc;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+.display-font {
+  font-family: "Space Grotesk", sans-serif;
+}
