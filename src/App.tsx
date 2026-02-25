@@ -596,20 +596,21 @@ export default function Portfolio() {
             <AnimatedSection>
               <div className={`rounded-3xl border p-8 backdrop-blur-md sm:p-10 ${theme.panel}`}>
                 <p className={`text-xs font-semibold uppercase tracking-[0.2em] ${theme.accentText}`}>About</p>
-                <h2 className="display-font mt-3 text-3xl font-bold sm:text-4xl">Built Through Real Projects</h2>
+                <h2 className="display-font mt-3 text-3xl font-bold sm:text-4xl">Professional Summary</h2>
                 <p className={`mt-6 text-sm leading-relaxed sm:text-base ${theme.textMuted}`}>
-                  I am a Versatile Full-Stack Engineer and Web3 Architect focused on <strong>Autonomous AI Systems</strong>,{" "}
-                  <strong>On-chain Security</strong>, and <strong>Multi-Chain Web3 Products</strong>.
+                  I am a Full-Stack Engineer and Web3 Architect focused on building production-grade products across{" "}
+                  <strong>Autonomous AI Systems</strong>, <strong>On-chain Security</strong>, and{" "}
+                  <strong>Multi-Chain Web3 Infrastructure</strong>.
                 </p>
                 <p className={`mt-4 text-sm leading-relaxed sm:text-base ${theme.textMuted}`}>
-                  My portfolio includes AI and security platforms like <em>NEXUS-FORGE</em>, <em>OMNI-CORE</em>,{" "}
-                  <em>AEGIS.OS</em>, <em>AEGIS-NET</em>, <em>agent.os</em>, and <em>AnchorGuard AI</em>.
+                  Selected AI and security work includes <em>NEXUS-FORGE</em>, <em>OMNI-CORE</em>, <em>AEGIS.OS</em>,{" "}
+                  <em>AEGIS-NET</em>, <em>agent.os</em>, and <em>AnchorGuard AI</em>. On the infrastructure and commerce side, I built{" "}
+                  <em>NEXUS-CASH</em> and <em>SSS-FORGE</em> for payment and stablecoin operations.
                 </p>
                 <p className={`mt-4 text-sm leading-relaxed sm:text-base ${theme.textMuted}`}>
-                  I also built commerce, DeFi, and ecosystem products such as <em>NEXUS-CASH</em>, <em>SSS-FORGE</em>,{" "}
-                  <em>Singular Yield</em>, <em>StableFlow</em>, <em>CrediProcure</em>, <em>CredPOS</em>,{" "}
-                  <em>SatsProcure</em>, <em>BIT-SHADOW</em>, <em>Trading Analytics Dashboard</em>, <em>InstaDrop</em>,{" "}
-                  <em>SolForge Academy</em>, <em>SUPERTEAM-ACADEMY</em>, and <em>VibeAgent</em>.
+                  Additional portfolio projects include <em>Singular Yield</em>, <em>StableFlow</em>, <em>CrediProcure</em>,{" "}
+                  <em>CredPOS</em>, <em>SatsProcure</em>, <em>BIT-SHADOW</em>, <em>Trading Analytics Dashboard</em>,{" "}
+                  <em>InstaDrop</em>, <em>SolForge Academy</em>, <em>SUPERTEAM-ACADEMY</em>, and <em>VibeAgent</em>.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <span className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs ${theme.chip}`}>
