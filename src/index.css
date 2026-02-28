@@ -35,3 +35,83 @@ button,
 .display-font {
   font-family: "Space Grotesk", sans-serif;
 }
+
+/* ═══════════════════════════════════════════
+   BACKGROUND ANIMATIONS — Professional & Minimal
+   ═══════════════════════════════════════════ */
+
+/* Aurora Glow A — top-left cyan orb breathing */
+@keyframes aurora-a {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  25% { transform: translate(30px, -40px) scale(1.08); }
+  50% { transform: translate(-15px, 25px) scale(1.12); }
+  75% { transform: translate(20px, -10px) scale(0.95); }
+}
+
+.animate-aurora-a {
+  animation: aurora-a 16s ease-in-out infinite;
+}
+
+/* Aurora Glow B — bottom-right blue orb breathing */
+@keyframes aurora-b {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  25% { transform: translate(-25px, 40px) scale(1.12); }
+  50% { transform: translate(15px, -20px) scale(0.88); }
+  75% { transform: translate(-30px, 10px) scale(1.06); }
+}
+
+.animate-aurora-b {
+  animation: aurora-b 20s ease-in-out infinite;
+}
+
+/* Grid Float — diagonal scrolling grid lines */
+@keyframes grid-float {
+  0% { background-position: 0px 0px; }
+  100% { background-position: -56px -56px; }
+}
+
+.animate-grid-float {
+  animation: grid-float 12s linear infinite;
+}
+
+/* Background Image Drift — subtle zoom & pan */
+@keyframes bg-drift {
+  0%, 100% { transform: scale(1.04) translate(0px, 0px); }
+  33% { transform: scale(1.07) translate(-8px, -5px); }
+  66% { transform: scale(1.05) translate(5px, -3px); }
+}
+
+.animate-bg-drift {
+  animation: bg-drift 22s ease-in-out infinite;
+}
+
+/* Bounce Soft — gentle scroll indicator */
+@keyframes bounce-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+.animate-bounce-soft {
+  animation: bounce-soft 2.5s ease-in-out infinite;
+}
+
+/* Run Line — scanning line in the navbar */
+@keyframes run-line {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(600%); }
+  100% { transform: translateX(-100%); }
+}
+
+.run-line {
+  animation: run-line 4s ease-in-out infinite;
+}
+
+/* No Scrollbar — mobile nav horizontal scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
