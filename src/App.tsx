@@ -1,4 +1,5 @@
 ﻿import { useEffect, useRef, useState, type ReactNode } from "react";
+import ParticleCanvas from "./ParticleCanvas";
 import {
   Moon,
   Sun,
@@ -431,55 +432,8 @@ export default function Portfolio() {
 
   return (
     <div className={`${theme.shell} relative min-h-screen overflow-hidden transition-colors duration-500`}>
-      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-        {/* Aurora Orbs — large, prominent glowing circles */}
-        <div
-          className={`animate-aurora-a absolute -left-20 -top-20 h-[40rem] w-[40rem] rounded-full blur-[100px] ${dark ? "bg-cyan-500/40" : "bg-sky-400/30"
-            }`}
-        />
-        <div
-          className={`animate-aurora-b absolute -bottom-20 -right-20 h-[40rem] w-[40rem] rounded-full blur-[100px] ${dark ? "bg-blue-600/35" : "bg-indigo-500/25"
-            }`}
-        />
-        <div
-          className={`animate-aurora-c absolute left-1/2 top-1/3 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full blur-[120px] ${dark ? "bg-purple-500/20" : "bg-violet-400/15"
-            }`}
-        />
-
-        {/* Animated Grid — clearly visible crossing lines */}
-        <div
-          className="animate-grid-float absolute inset-0"
-          style={{
-            backgroundImage: dark
-              ? "linear-gradient(rgba(56,189,248,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.12) 1px, transparent 1px)"
-              : "linear-gradient(rgba(14,116,144,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(14,116,144,0.1) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-            opacity: 1,
-          }}
-        />
-
-        {/* Floating Particles — 20 small dots drifting across the screen */}
-        {Array.from({ length: 20 }).map((_, i) => (
-          <div
-            key={i}
-            className="floating-particle absolute rounded-full"
-            style={{
-              width: `${2 + (i % 4) * 2}px`,
-              height: `${2 + (i % 4) * 2}px`,
-              left: `${(i * 5.26) % 100}%`,
-              top: `${(i * 7.37 + 10) % 100}%`,
-              background: dark
-                ? `rgba(56, 189, 248, ${0.3 + (i % 3) * 0.15})`
-                : `rgba(14, 116, 144, ${0.25 + (i % 3) * 0.12})`,
-              boxShadow: dark
-                ? `0 0 ${6 + i % 4 * 4}px rgba(56, 189, 248, 0.4)`
-                : `0 0 ${6 + i % 4 * 4}px rgba(14, 116, 144, 0.3)`,
-              animationDelay: `${i * 0.7}s`,
-              animationDuration: `${12 + (i % 5) * 4}s`,
-            }}
-          />
-        ))}
-      </div>
+      {/* Interactive Particle Network Background */}
+      <ParticleCanvas dark={dark} />
 
       <nav className="fixed left-1/2 top-4 z-50 w-[min(1120px,calc(100%-1.5rem))] -translate-x-1/2">
         <div className={`rounded-2xl border px-4 py-3 backdrop-blur-xl transition-colors ${theme.nav}`}>
