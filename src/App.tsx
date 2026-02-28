@@ -393,57 +393,55 @@ export default function Portfolio() {
 
   const theme = dark
     ? {
-        shell: "bg-[#020712] text-slate-100",
-        nav: "bg-[#040a16]/80 border-slate-700/60 shadow-[0_10px_40px_rgba(2,6,23,0.55)]",
-        navItem: "text-slate-300 hover:text-cyan-300",
-        navActive: "bg-cyan-300 text-slate-950 shadow-[0_8px_24px_rgba(34,211,238,0.32)]",
-        panel: "bg-[#081220]/72 border-cyan-500/25",
-        card: "bg-[#0a172a]/78 border-slate-700/70",
-        textMuted: "text-slate-300/85",
-        textSoft: "text-slate-400",
-        accentText: "text-cyan-300",
-        primaryButton: "bg-cyan-300 text-slate-950 hover:bg-cyan-200",
-        secondaryButton: "border-slate-500/70 text-slate-100 hover:border-cyan-300 hover:text-cyan-300",
-        socialButton: "border-slate-600/70 bg-[#091428]/80 hover:border-cyan-300 hover:text-cyan-300",
-        chip: "border-slate-600/70 bg-[#091428]/85",
-        input:
-          "bg-[#081423]/85 border-slate-600/70 text-slate-100 placeholder:text-slate-500 focus:border-cyan-300 focus:ring-cyan-300/25",
-        footer: "border-slate-700/70",
-      }
+      shell: "bg-[#020712] text-slate-100",
+      nav: "bg-[#040a16]/80 border-slate-700/60 shadow-[0_10px_40px_rgba(2,6,23,0.55)]",
+      navItem: "text-slate-300 hover:text-cyan-300",
+      navActive: "bg-cyan-300 text-slate-950 shadow-[0_8px_24px_rgba(34,211,238,0.32)]",
+      panel: "bg-[#081220]/72 border-cyan-500/25",
+      card: "bg-[#0a172a]/78 border-slate-700/70",
+      textMuted: "text-slate-300/85",
+      textSoft: "text-slate-400",
+      accentText: "text-cyan-300",
+      primaryButton: "bg-cyan-300 text-slate-950 hover:bg-cyan-200",
+      secondaryButton: "border-slate-500/70 text-slate-100 hover:border-cyan-300 hover:text-cyan-300",
+      socialButton: "border-slate-600/70 bg-[#091428]/80 hover:border-cyan-300 hover:text-cyan-300",
+      chip: "border-slate-600/70 bg-[#091428]/85",
+      input:
+        "bg-[#081423]/85 border-slate-600/70 text-slate-100 placeholder:text-slate-500 focus:border-cyan-300 focus:ring-cyan-300/25",
+      footer: "border-slate-700/70",
+    }
     : {
-        shell: "bg-slate-100 text-slate-900",
-        nav: "bg-white/85 border-slate-300/80 shadow-[0_10px_35px_rgba(15,23,42,0.08)]",
-        navItem: "text-slate-600 hover:text-sky-700",
-        navActive: "bg-sky-700 text-white shadow-[0_8px_20px_rgba(3,105,161,0.24)]",
-        panel: "bg-white/75 border-sky-200/70",
-        card: "bg-white/85 border-slate-200/90",
-        textMuted: "text-slate-700",
-        textSoft: "text-slate-500",
-        accentText: "text-sky-700",
-        primaryButton: "bg-sky-700 text-white hover:bg-sky-600",
-        secondaryButton: "border-slate-300 text-slate-800 hover:border-sky-600 hover:text-sky-700",
-        socialButton: "border-slate-300 bg-white/90 hover:border-sky-600 hover:text-sky-700",
-        chip: "border-slate-300 bg-white/90",
-        input:
-          "bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-sky-600 focus:ring-sky-500/25",
-        footer: "border-slate-300/90",
-      };
+      shell: "bg-slate-100 text-slate-900",
+      nav: "bg-white/85 border-slate-300/80 shadow-[0_10px_35px_rgba(15,23,42,0.08)]",
+      navItem: "text-slate-600 hover:text-sky-700",
+      navActive: "bg-sky-700 text-white shadow-[0_8px_20px_rgba(3,105,161,0.24)]",
+      panel: "bg-white/75 border-sky-200/70",
+      card: "bg-white/85 border-slate-200/90",
+      textMuted: "text-slate-700",
+      textSoft: "text-slate-500",
+      accentText: "text-sky-700",
+      primaryButton: "bg-sky-700 text-white hover:bg-sky-600",
+      secondaryButton: "border-slate-300 text-slate-800 hover:border-sky-600 hover:text-sky-700",
+      socialButton: "border-slate-300 bg-white/90 hover:border-sky-600 hover:text-sky-700",
+      chip: "border-slate-300 bg-white/90",
+      input:
+        "bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 focus:border-sky-600 focus:ring-sky-500/25",
+      footer: "border-slate-300/90",
+    };
 
   return (
     <div className={`${theme.shell} relative min-h-screen overflow-hidden transition-colors duration-500`}>
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
         <div
-          className={`animate-aurora-a absolute -left-28 -top-24 h-[26rem] w-[26rem] rounded-full blur-3xl ${
-            dark ? "bg-cyan-400/20" : "bg-sky-400/20"
-          }`}
+          className={`animate-aurora-a absolute -left-28 -top-24 h-[32rem] w-[32rem] rounded-full blur-3xl ${dark ? "bg-cyan-400/30" : "bg-sky-400/25"
+            }`}
         />
         <div
-          className={`animate-aurora-b absolute -bottom-28 right-[-7rem] h-[30rem] w-[30rem] rounded-full blur-3xl ${
-            dark ? "bg-blue-500/16" : "bg-indigo-400/18"
-          }`}
+          className={`animate-aurora-b absolute -bottom-28 right-[-7rem] h-[34rem] w-[34rem] rounded-full blur-3xl ${dark ? "bg-blue-500/25" : "bg-indigo-400/22"
+            }`}
         />
         <div
-          className={`animate-grid-float absolute inset-0 ${dark ? "opacity-[0.18]" : "opacity-[0.16]"}`}
+          className={`animate-grid-float absolute inset-0 ${dark ? "opacity-[0.35]" : "opacity-[0.25]"}`}
           style={{
             backgroundImage: dark
               ? "linear-gradient(rgba(56,189,248,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.08) 1px, transparent 1px)"
@@ -468,9 +466,8 @@ export default function Portfolio() {
                 <button
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
-                  className={`rounded-full px-3 py-1.5 text-xs font-semibold tracking-[0.08em] transition-all duration-300 ${
-                    activeSection === item.id ? theme.navActive : theme.navItem
-                  }`}
+                  className={`rounded-full px-3 py-1.5 text-xs font-semibold tracking-[0.08em] transition-all duration-300 ${activeSection === item.id ? theme.navActive : theme.navItem
+                    }`}
                 >
                   {item.label}
                 </button>
@@ -500,16 +497,15 @@ export default function Portfolio() {
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold tracking-[0.08em] transition-all duration-300 ${
-                  activeSection === item.id ? theme.navActive : theme.navItem
-                }`}
+                className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold tracking-[0.08em] transition-all duration-300 ${activeSection === item.id ? theme.navActive : theme.navItem
+                  }`}
               >
                 {item.label}
               </button>
             ))}
           </div>
-          <div className={`mt-2 h-px overflow-hidden rounded-full ${dark ? "bg-cyan-200/10" : "bg-sky-900/10"}`}>
-            <div className={`run-line h-full w-20 ${dark ? "bg-cyan-300/70" : "bg-sky-700/60"}`} />
+          <div className={`mt-2 h-0.5 overflow-hidden rounded-full ${dark ? "bg-cyan-200/15" : "bg-sky-900/12"}`}>
+            <div className={`run-line h-full w-24 ${dark ? "bg-gradient-to-r from-transparent via-cyan-300 to-transparent" : "bg-gradient-to-r from-transparent via-sky-600 to-transparent"}`} />
           </div>
         </div>
       </nav>
@@ -529,9 +525,8 @@ export default function Portfolio() {
           <div className="relative z-10 mx-auto flex min-h-[calc(100vh-9rem)] max-w-6xl flex-col justify-center">
             <AnimatedSection className="max-w-3xl">
               <span
-                className={`inline-flex rounded-full border px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] ${
-                  dark ? "border-cyan-400/40 bg-cyan-500/10 text-cyan-200" : "border-sky-300 bg-sky-50 text-sky-700"
-                }`}
+                className={`inline-flex rounded-full border px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] ${dark ? "border-cyan-400/40 bg-cyan-500/10 text-cyan-200" : "border-sky-300 bg-sky-50 text-sky-700"
+                  }`}
               >
                 Available for freelance work
               </span>
@@ -648,9 +643,8 @@ export default function Portfolio() {
                       <div className="mb-3 flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <span
-                            className={`inline-flex h-8 w-8 items-center justify-center rounded-lg ${
-                              dark ? "bg-cyan-400/12 text-cyan-200" : "bg-sky-100 text-sky-700"
-                            }`}
+                            className={`inline-flex h-8 w-8 items-center justify-center rounded-lg ${dark ? "bg-cyan-400/12 text-cyan-200" : "bg-sky-100 text-sky-700"
+                              }`}
                           >
                             {skill.icon}
                           </span>
@@ -725,11 +719,10 @@ export default function Portfolio() {
               {projects.map((project, index) => (
                 <AnimatedSection key={project.title} delay={index * 0.04}>
                   <article
-                    className={`group overflow-hidden rounded-2xl border backdrop-blur-md transition-all duration-300 hover:-translate-y-1 ${
-                      hoveredProject === index
+                    className={`group overflow-hidden rounded-2xl border backdrop-blur-md transition-all duration-300 hover:-translate-y-1 ${hoveredProject === index
                         ? `${theme.panel} shadow-[0_16px_35px_rgba(8,145,178,0.22)]`
                         : theme.card
-                    }`}
+                      }`}
                     onMouseEnter={() => setHoveredProject(index)}
                     onMouseLeave={() => setHoveredProject(null)}
                   >
