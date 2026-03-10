@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">CrediProcure mark</title>
+  <desc id="desc">Rounded square logo combining an invoice document and a CP monogram for CrediProcure.</desc>
+
+  <rect x="40" y="40" width="432" height="432" rx="108" fill="#071421"/>
+  <rect x="56" y="56" width="400" height="400" rx="92" fill="none" stroke="#7ce9d5" stroke-opacity="0.26" stroke-width="2"/>
+
+  <circle cx="148" cy="126" r="8" fill="#22d3aa" fill-opacity="0.88"/>
+  <circle cx="370" cy="118" r="6" fill="#4f46e5" fill-opacity="0.82"/>
+  <circle cx="396" cy="392" r="7" fill="#22d3aa" fill-opacity="0.82"/>
+
+  <rect x="194" y="126" width="156" height="206" rx="28" fill="#0b3e46" stroke="#38d5bd" stroke-opacity="0.28"/>
+
+  <path d="M182 156h150l38 38v162c0 22.091-17.909 40-40 40H182c-22.091 0-40-17.909-40-40V196c0-22.091 17.909-40 40-40Z" fill="#eff5ff"/>
+  <path d="M332 156v30c0 5.523 4.477 10 10 10h28Z" fill="#4f46e5"/>
+  <path d="M332 156v30c0 5.523 4.477 10 10 10h28" fill="none" stroke="#312e81" stroke-opacity="0.24" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="176" y="216" width="114" height="12" rx="6" fill="#91a6bf"/>
+  <rect x="176" y="244" width="86" height="12" rx="6" fill="#91a6bf" fill-opacity="0.72"/>
+
+  <path d="M215 308c-24.853 0-45 20.147-45 45s20.147 45 45 45h22" fill="none" stroke="#22d3aa" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M273 308v90" fill="none" stroke="#14b8a6" stroke-width="18" stroke-linecap="round"/>
+  <path d="M273 308h23c24.301 0 44 19.699 44 44s-19.699 44-44 44h-23" fill="none" stroke="#4f46e5" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

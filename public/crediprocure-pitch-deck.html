@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CrediProcure Pitch Deck</title>
+  <style>
+    :root {
+      --bg: #04111d;
+      --panel: #081a2b;
+      --panel-2: #0b2136;
+      --text: #e7eef6;
+      --muted: #99a8ba;
+      --line: rgba(125, 233, 213, 0.18);
+      --teal: #22d3aa;
+      --teal-2: #14b8a6;
+      --indigo: #4f46e5;
+      --slate: #8aa0b8;
+      --white: #f7fbff;
+      --warm: #f59e0b;
+      --rose: #fb7185;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #02101b;
+      color: var(--text);
+      font-family: "Aptos", "Segoe UI", "Trebuchet MS", sans-serif;
+    }
+
+    body {
+      counter-reset: slide;
+    }
+
+    .deck {
+      padding: 18px 0 32px;
+    }
+
+    .slide {
+      position: relative;
+      width: 1280px;
+      height: 720px;
+      margin: 0 auto 18px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(34, 211, 170, 0.16), transparent 26%),
+        radial-gradient(circle at 90% 16%, rgba(79, 70, 229, 0.18), transparent 24%),
+        linear-gradient(145deg, #03111d 0%, #071a2b 50%, #09213a 100%);
+      border: 1px solid rgba(125, 233, 213, 0.14);
+      border-radius: 28px;
+      page-break-after: always;
+      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.32);
+    }
+
+    .slide:last-child {
+      page-break-after: auto;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .slide-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      padding: 52px 58px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--teal);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), rgba(34, 211, 170, 0.08));
+    }
+
+    h1, h2, h3, p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 78px;
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+    }
+
+    h2 {
+      font-size: 42px;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    h3 {
+      font-size: 21px;
+      line-height: 1.2;
+    }
+
+    .lead {
+      max-width: 780px;
+      font-size: 27px;
+      line-height: 1.38;
+      color: #dce7f3;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .hero-row {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      margin-top: auto;
+      align-items: end;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(10, 28, 45, 0.84), rgba(8, 22, 37, 0.9));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px 24px;
+      backdrop-filter: blur(6px);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(125, 233, 213, 0.16);
+      background: rgba(6, 21, 35, 0.58);
+      color: #dce7f3;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .logo-lockup {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+
+    .logo-lockup img {
+      width: 88px;
+      height: 88px;
+      border-radius: 24px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      background: rgba(4, 18, 29, 0.48);
+      border: 1px solid rgba(125, 233, 213, 0.12);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .stat-value {
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .stat-label {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .bullet-card {
+      background: linear-gradient(180deg, rgba(11, 30, 48, 0.86), rgba(8, 23, 38, 0.9));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px 22px 20px;
+    }
+
+    .bullet-card h3 {
+      margin-bottom: 14px;
+    }
+
+    .bullet-list {
+      display: grid;
+      gap: 12px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 16px;
+      color: #dbe6f2;
+      font-size: 18px;
+      line-height: 1.45;
+    }
+
+    .bullet-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--teal), var(--indigo));
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .flow-step {
+      position: relative;
+      min-height: 190px;
+      padding: 18px;
+      border-radius: 24px;
+      border: 1px solid rgba(125, 233, 213, 0.16);
+      background: linear-gradient(180deg, rgba(10, 27, 43, 0.9), rgba(6, 20, 32, 0.95));
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -9px;
+      width: 18px;
+      height: 18px;
+      margin-top: -9px;
+      background: linear-gradient(135deg, var(--teal), var(--indigo));
+      clip-path: polygon(0 0, 100% 50%, 0 100%);
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: rgba(34, 211, 170, 0.12);
+      color: var(--teal);
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .step-copy {
+      color: #dbe6f2;
+      font-size: 16px;
+      line-height: 1.48;
+    }
+
+    .arch-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .contract-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contract {
+      padding: 18px 20px;
+      border-radius: 22px;
+      border: 1px solid rgba(125, 233, 213, 0.18);
+      background: linear-gradient(180deg, rgba(10, 27, 43, 0.9), rgba(7, 19, 31, 0.95));
+    }
+
+    .contract small {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .capability {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(5, 16, 27, 0.68);
+      border: 1px solid rgba(125, 233, 213, 0.12);
+      color: #dde8f3;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .showcase {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 20px;
+      margin-top: 28px;
+      align-items: stretch;
+    }
+
+    .showcase img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 22px;
+      border: 1px solid rgba(125, 233, 213, 0.14);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .milestone {
+      display: grid;
+      grid-template-columns: 110px 1fr auto;
+      gap: 18px;
+      align-items: start;
+      padding: 18px 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(125, 233, 213, 0.14);
+      background: rgba(8, 22, 37, 0.84);
+    }
+
+    .phase {
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .status {
+      align-self: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .done { background: rgba(34, 211, 170, 0.12); color: #6ee7c8; }
+    .next { background: rgba(79, 70, 229, 0.14); color: #9ea5ff; }
+    .planned { background: rgba(245, 158, 11, 0.12); color: #f7c66b; }
+
+    .footer-row {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+
+    .page-no::before {
+      counter-increment: slide;
+      content: "Slide " counter(slide);
+    }
+
+    @media print {
+      @page {
+        size: 13.33in 7.5in;
+        margin: 0;
+      }
+
+      html, body {
+        background: #02101b;
+      }
+
+      .deck {
+        padding: 0;
+      }
+
+      .slide {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="logo-lockup">
+          <img src="./crediprocure-mark.png" alt="CrediProcure logo" />
+          <div>
+            <div class="eyebrow">Creditcoin RWA / DeFi</div>
+            <p class="muted" style="margin-top: 8px; font-size: 16px;">MVP pitch deck for Surge Discovery and ecosystem partners</p>
+          </div>
+        </div>
+
+        <h1>CrediProcure</h1>
+        <p class="lead" style="margin-top: 18px;">
+          On-chain invoice financing for SMEs through tokenized real-world assets on Creditcoin.
+        </p>
+
+        <div class="chip-row">
+          <div class="chip">RWA invoice tokenization</div>
+          <div class="chip">B2B liquidity rails</div>
+          <div class="chip">Creditcoin testnet MVP</div>
+          <div class="chip">Vendor + investor marketplace</div>
+        </div>
+
+        <div class="hero-row">
+          <div class="panel">
+            <h3 style="margin-bottom: 14px;">What CrediProcure does</h3>
+            <p class="muted" style="font-size: 18px; line-height: 1.55;">
+              CrediProcure converts business invoices into programmable on-chain assets. Vendors unlock liquidity
+              faster, while investors gain access to transparent, real-world-backed yield opportunities.
+            </p>
+          </div>
+          <div class="panel">
+            <h3 style="margin-bottom: 14px;">Current stage</h3>
+            <p class="muted" style="font-size: 18px; line-height: 1.55;">
+              Functional MVP with deployed smart contracts, live funding and repayment flows, wallet connectivity,
+              and a full frontend app on Creditcoin testnet.
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-row">
+          <span>CrediProcure deck</span>
+          <span class="page-no"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow">Problem</div>
+        <h2 style="margin-top: 14px; max-width: 920px;">
+          SMEs face a massive trade finance gap, while DeFi capital still lacks transparent real-world yield rails.
+        </h2>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-value">$3.6T</div>
+            <div class="stat-label">Global trade finance gap for SMEs</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">30-90d</div>
+            <div class="stat-label">Typical payment wait time for business invoices</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">High</div>
+            <div class="stat-label">Friction from paperwork, intermediaries, and opaque pricing</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">Low</div>
+            <div class="stat-label">Access to stable, real-world-backed DeFi yield products</div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="bullet-card">
+            <h3>Vendor pain</h3>
+            <ul class="bullet-list">
+              <li>Cash flow is locked while businesses wait weeks or months to get paid.</li>
+              <li>Traditional factoring is slow, expensive, and dependent on centralized intermediaries.</li>
+              <li>Funding status, fees, and repayment records are often fragmented and opaque.</li>
+            </ul>
+          </div>
+          <div class="bullet-card">
+            <h3>Investor pain</h3>
+            <ul class="bullet-list">
+              <li>Most DeFi yield remains crypto-native and disconnected from real-world business activity.</li>
+              <li>It is difficult to access invoice-backed opportunities with transparent lifecycle data.</li>
+              <li>Investors want programmable exposure to RWAs with auditable on-chain records.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-row">
+          <span>Trade finance + DeFi yield gap</span>
+          <span class="page-no"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow">Solution</div>
+        <h2 style="margin-top: 14px; max-width: 920px;">
+          CrediProcure tokenizes invoices as RWAs and connects vendors with direct or pooled on-chain liquidity.
+        </h2>
+
+        <div class="flow">
+          <div class="flow-step">
+            <div class="step-number">01</div>
+            <h3>Create</h3>
+            <p class="step-copy" style="margin-top: 12px;">
+              A vendor creates an invoice and sets funding terms such as amount, due date, and yield.
+            </p>
+          </div>
+          <div class="flow-step">
+            <div class="step-number">02</div>
+            <h3>Mint</h3>
+            <p class="step-copy" style="margin-top: 12px;">
+              The invoice is minted as an ERC-721 RWA token with immutable lifecycle data on Creditcoin.
+            </p>
+          </div>
+          <div class="flow-step">
+            <div class="step-number">03</div>
+            <h3>Fund</h3>
+            <p class="step-copy" style="margin-top: 12px;">
+              Investors fund specific invoices directly or supply capital through a shared liquidity pool.
+            </p>
+          </div>
+          <div class="flow-step">
+            <div class="step-number">04</div>
+            <h3>Repay</h3>
+            <p class="step-copy" style="margin-top: 12px;">
+              Repayment is recorded on-chain and reflected in investor positions and vendor credit history.
+            </p>
+          </div>
+        </div>
+
+        <div class="two-col" style="margin-top: 18px;">
+          <div class="bullet-card">
+            <h3>For vendors</h3>
+            <ul class="bullet-list">
+              <li>Faster access to working capital.</li>
+              <li>Transparent financing terms and repayment tracking.</li>
+              <li>On-chain credit history built from protocol activity.</li>
+            </ul>
+          </div>
+          <div class="bullet-card">
+            <h3>For investors</h3>
+            <ul class="bullet-list">
+              <li>Direct access to invoice-backed RWA opportunities.</li>
+              <li>Transparent funding, repayment, and portfolio visibility.</li>
+              <li>Flexible exposure through marketplace and liquidity pool models.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-row">
+          <span>Two-sided marketplace + pool model</span>
+          <span class="page-no"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow">Architecture</div>
+        <h2 style="margin-top: 14px; max-width: 960px;">
+          The MVP combines three core smart contracts with a live dashboard for vendors and investors.
+        </h2>
+
+        <div class="arch-grid">
+          <div class="contract-stack">
+            <div class="contract">
+              <h3>InvoiceNFT.sol</h3>
+              <small>Represents each invoice as an ERC-721 RWA token with vendor, amount, due date, yield rate, and status.</small>
+            </div>
+            <div class="contract">
+              <h3>LendingPool.sol</h3>
+              <small>Manages pooled liquidity, direct invoice funding, withdrawals, and repayment flows between investors and vendors.</small>
+            </div>
+            <div class="contract">
+              <h3>MockStablecoin.sol</h3>
+              <small>Provides a demo stablecoin for testnet operations and end-to-end validation during the MVP stage.</small>
+            </div>
+          </div>
+
+          <div class="panel" style="display: flex; flex-direction: column;">
+            <h3 style="margin-bottom: 16px;">User-facing capabilities</h3>
+            <div class="capability-grid">
+              <div class="capability">Vendor dashboard with invoice minting, repayment, and credit history views</div>
+              <div class="capability">Investor dashboard with marketplace funding, LP participation, and portfolio tracking</div>
+              <div class="capability">Wallet support for MetaMask, Phantom EVM mode, and Bitget Wallet</div>
+              <div class="capability">Live reads from deployed contracts and event-driven protocol history</div>
+              <div class="capability">Liquidity request flow, inventory management, and KYB interface for business onboarding</div>
+              <div class="capability">Responsive frontend built with React, TypeScript, Vite, Ethers.js, and Tailwind CSS</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-row">
+          <span>Creditcoin testnet architecture</span>
+          <span class="page-no"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow">MVP Proof</div>
+        <h2 style="margin-top: 14px; max-width: 920px;">
+          CrediProcure is already more than a concept: the MVP is shipped, testnet-deployed, and demoable end to end.
+        </h2>
+
+        <div class="showcase">
+          <img src="./crediprocure.jpeg" alt="CrediProcure app screenshot" />
+          <div class="panel">
+            <h3 style="margin-bottom: 16px;">What already works</h3>
+            <ul class="bullet-list">
+              <li>Vendors can create invoice drafts and self-mint invoice RWAs on-chain.</li>
+              <li>Investors can mint demo stablecoins, fund invoices, or deposit into the pool.</li>
+              <li>Repayment updates are reflected in vendor credit history and investor portfolio views.</li>
+              <li>Marketplace inventory, LP balances, funding history, and repayment activity are loaded from live contract reads and events.</li>
+              <li>Hackathon-ready demo flow is live on Creditcoin testnet and documented in the repository.</li>
+            </ul>
+            <div class="chip-row" style="margin-top: 20px;">
+              <div class="chip">React + TypeScript</div>
+              <div class="chip">Ethers.js</div>
+              <div class="chip">Solidity + Hardhat</div>
+              <div class="chip">Creditcoin testnet</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-row">
+          <span>Live app + deployed contracts</span>
+          <span class="page-no"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow">Why now</div>
+        <h2 style="margin-top: 14px; max-width: 900px;">
+          Invoice financing is a strong RWA entry point because it ties real business activity to transparent on-chain capital flows.
+        </h2>
+
+        <div class="two-col">
+          <div class="bullet-card">
+            <h3>Why this market matters</h3>
+            <ul class="bullet-list">
+              <li>SMEs are chronically underserved in working capital markets.</li>
+              <li>Invoices are recurring business assets with clear payment cycles.</li>
+              <li>RWA adoption needs products that are simple, auditable, and economically useful from day one.</li>
+            </ul>
+          </div>
+          <div class="bullet-card">
+            <h3>Why Creditcoin</h3>
+            <ul class="bullet-list">
+              <li>Creditcoin is already positioned around real-world credit and finance use cases.</li>
+              <li>CrediProcure fits naturally into the ecosystem's RWA and DeFi thesis.</li>
+              <li>The protocol can evolve from MVP into a real financing layer with compliance, risk, and mainnet support.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top: 20px;">
+          <h3 style="margin-bottom: 14px;">Long-term opportunity</h3>
+          <p class="muted" style="font-size: 19px; line-height: 1.58;">
+            CrediProcure is designed as programmable infrastructure for trade finance. The long-term opportunity is not
+            only invoice funding, but a broader network for SME financing, credit signaling, RWA distribution, and
+            transparent capital formation across the Creditcoin ecosystem.
+          </p>
+        </div>
+
+        <div class="footer-row">
+          <span>RWA product with real economic utility</span>
+          <span class="page-no"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow">Roadmap</div>
+        <h2 style="margin-top: 14px; max-width: 900px;">
+          The MVP is complete. The next phase is making the protocol richer, more credible, and closer to mainnet readiness.
+        </h2>
+
+        <div class="timeline">
+          <div class="milestone">
+            <div class="phase">Now</div>
+            <div>
+              <h3>MVP shipped on testnet</h3>
+              <p class="muted" style="margin-top: 8px; font-size: 17px; line-height: 1.5;">
+                Invoice minting, direct funding, pool participation, repayment flow, dashboard UX, and live on-chain reads.
+              </p>
+            </div>
+            <div class="status done">Completed</div>
+          </div>
+          <div class="milestone">
+            <div class="phase">Next</div>
+            <div>
+              <h3>Protocol expansion</h3>
+              <p class="muted" style="margin-top: 8px; font-size: 17px; line-height: 1.5;">
+                Multi-investor syndication, richer analytics, stronger risk scoring, enhanced pool accounting, and indexer support.
+              </p>
+            </div>
+            <div class="status next">Next</div>
+          </div>
+          <div class="milestone">
+            <div class="phase">Later</div>
+            <div>
+              <h3>Mainnet readiness</h3>
+              <p class="muted" style="margin-top: 8px; font-size: 17px; line-height: 1.5;">
+                Production stablecoin integration, off-chain invoice verification, compliance layers, governance, and launch preparation.
+              </p>
+            </div>
+            <div class="status planned">Planned</div>
+          </div>
+        </div>
+
+        <div class="footer-row">
+          <span>From hackathon MVP to real protocol</span>
+          <span class="page-no"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow">Founder + ask</div>
+        <h2 style="margin-top: 14px; max-width: 960px;">
+          CrediProcure is built to turn invoice financing into a transparent, programmable RWA rail for real business liquidity.
+        </h2>
+
+        <div class="two-col" style="margin-top: 32px;">
+          <div class="panel">
+            <h3 style="margin-bottom: 16px;">Builder</h3>
+            <p style="font-size: 26px; font-weight: 700;">Pandu Darma Anugrah</p>
+            <p class="muted" style="margin-top: 12px; font-size: 18px; line-height: 1.56;">
+              Independent full-stack engineer and Web3 builder focused on AI systems, DeFi infrastructure, and
+              real-world on-chain financial products.
+            </p>
+          </div>
+          <div class="panel">
+            <h3 style="margin-bottom: 16px;">Current ask</h3>
+            <ul class="bullet-list">
+              <li>Discovery and ecosystem visibility for the MVP.</li>
+              <li>Feedback from RWA, DeFi, and Creditcoin ecosystem partners.</li>
+              <li>Strategic support for roadmap validation, protocol design, and next-stage growth.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top: auto;">
+          <p style="font-size: 20px; line-height: 1.6; color: #dce7f3;">
+            Repository, demo, and documentation are available through the project profile and public links.
+          </p>
+        </div>
+
+        <div class="footer-row">
+          <span>CrediProcure</span>
+          <span class="page-no"></span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
