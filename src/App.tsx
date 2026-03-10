@@ -1,7 +1,7 @@
-﻿import React, { useState, Suspense, lazy } from "react";
+﻿import { useState, Suspense, lazy } from "react";
 import {
   Server, Globe, Code, FileCode, Smartphone, Briefcase,
-  Github, Linkedin, Twitter, ExternalLink, Play
+  Github, Linkedin, Twitter, Play
 } from "lucide-react";
 
 const Hero3D = lazy(() => import("./Hero3D"));
@@ -161,7 +161,7 @@ const projects = [
 
 // --- COMPONENTS ---
 
-const RightTimeline = ({ isTop = false, isBottom = false }) => {
+const RightTimeline = ({ isTop = false }) => {
   return (
     <div className="absolute right-8 md:right-16 top-0 bottom-0 flex flex-col items-center justify-center opacity-70">
       {!isTop && <div className="w-[1px] h-full bg-[#FF4A57]/30 absolute"></div>}
@@ -295,7 +295,7 @@ export default function App() {
 
         {/* Contact Section */}
         <section id="contact" className="relative py-24 mb-24">
-          <RightTimeline isBottom />
+          <RightTimeline />
           <div className="relative z-10 w-full md:w-3/4 lg:w-1/2">
             <h2 className="text-[#FF4A57] text-4xl md:text-5xl font-bold mb-12">Connect with me</h2>
 
