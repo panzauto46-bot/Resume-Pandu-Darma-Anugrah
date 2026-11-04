@@ -1,0 +1,564 @@
+/* =========================================================================
+   Layer 2 — White / Glass / Motion
+   Dimuat SETELAH index.css. Semua class lama tetap dipakai; file ini
+   mengganti token warna, menambah permukaan glass, dan memasang motion.
+
+   Aturan glass yang dipatuhi:
+   - glass hanya dipakai di 3 tempat, dan selalu ada isi nyata di belakangnya
+     (konten yang discroll di belakang header, screenshot di belakang caption,
+     konten halaman di belakang overlay)
+   - sisanya solid. Kalau semua permukaan kaca, tidak ada yang terasa depan.
+   ========================================================================= */
+
+:root {
+  --paper: #f7f6f2;
+  --paper-2: #ffffff;
+  --ink: #131210;
+  --muted: #57534a;
+  --rule: rgba(19, 18, 16, 0.1);
+  --rule-strong: rgba(19, 18, 16, 0.2);
+  --accent: #b83412;
+  --accent-soft: rgba(184, 52, 18, 0.08);
+
+  --glass: rgba(255, 255, 255, 0.52);
+  --glass-strong: rgba(255, 255, 255, 0.74);
+  --glass-brd: rgba(255, 255, 255, 0.85);
+  --glass-ink: rgba(19, 18, 16, 0.06);
+
+  --hair: rgba(19, 18, 16, 0.14);
+  --shadow-1: 0 1px 2px rgba(19, 18, 16, 0.04), 0 14px 34px -26px rgba(19, 18, 16, 0.45);
+  --shadow-2: 0 34px 80px -52px rgba(19, 18, 16, 0.55);
+  --radius: 3px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 720ms;
+}
+
+/* ---------- base ---------- */
+
+body {
+  background-color: var(--paper);
+  /* wash tipis di atas: memberi "lantai" terang, bukan orb dekoratif */
+  background-image: radial-gradient(120% 70% at 50% -18%, #fffefb 0%, rgba(255, 255, 255, 0) 62%);
+  background-repeat: no-repeat;
+  color: var(--ink);
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* garis tipis lebih halus dari versi lama */
+.site-header,
+.section-head,
+.site-footer,
+.plate-caption,
+.index-head,
+.record-head {
+  border-color: var(--hair);
+}
+
+/* ---------- 1. header: glass yang benar-benar menahan konten ---------- */
+
+.site-header {
+  background: rgba(247, 246, 242, 0.66);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  border-bottom: 1px solid transparent;
+  transition: background-color 320ms ease, border-color 320ms ease, box-shadow 320ms ease;
+}
+
+.site-header.is-stuck {
+  background: rgba(255, 255, 255, 0.62);
+  border-bottom-color: var(--hair);
+  box-shadow: 0 18px 40px -38px rgba(19, 18, 16, 0.6);
+}
+
+.header-inner {
+  min-height: var(--header-h);
+  transition: min-height 320ms var(--ease);
+}
+
+.site-header.is-stuck .header-inner {
+  min-height: 56px;
+}
+
+.desktop-nav a,
+.brand {
+  transition: color 200ms ease;
+}
+
+.desktop-nav a:hover,
+.brand:hover {
+  color: var(--accent);
+}
+
+/* tombol resume: magnetik + garis bawah yang tumbuh */
+.nav-resume {
+  position: relative;
+  will-change: transform;
+  border-left: 1px solid var(--hair);
+  padding-block: 0.35rem;
+  transition: transform 400ms var(--ease), color 200ms ease;
+}
+
+.nav-resume::after {
+  content: "";
+  position: absolute;
+  left: clamp(1.1rem, 2.2vw, 2rem);
+  right: 0;
+  bottom: 0.2rem;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 420ms var(--ease);
+}
+
+.nav-resume:hover::after {
+  transform: scaleX(1);
+}
+
+/* progress bar scroll — 1px, di bawah header */
+.scroll-progress {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 60;
+  height: 2px;
+  width: 100%;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--accent), #d9754a);
+  pointer-events: none;
+}
+
+/* ---------- 2. hero: masuk berurutan, parallax tipis ---------- */
+
+.hero {
+  position: relative;
+}
+
+.hero-title {
+  text-wrap: balance;
+  letter-spacing: -0.035em;
+  will-change: transform;
+}
+
+.hero-lede {
+  text-wrap: pretty;
+  max-width: 52ch;
+}
+
+.hero-links a,
+.contact-email,
+.plate-links a,
+.index-links a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
+  transition: color 200ms ease, border-color 200ms ease, background-color 200ms ease;
+}
+
+.hero-links a:hover,
+.plate-links a:hover,
+.index-links a:hover {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* fakta hero: kartu glass tipis yang menempel di sebelah judul */
+/* fakta hero: kartu solid. Tidak ada isi di belakangnya, jadi glass di sini
+   cuma dekorasi — lebih jujur dan lebih terbaca sebagai kartu solid. */
+.hero-facts {
+  position: relative;
+  padding: clamp(1rem, 2.4vw, 1.6rem);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  box-shadow: var(--shadow-1);
+}
+
+.hero-facts .fact-row + .fact-row {
+  border-top: 1px solid var(--rule);
+}
+
+.hero-facts dd {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 3. Selected work: caption jadi panel glass di atas screenshot ---------- */
+
+.plates {
+  gap: clamp(2.6rem, 6vw, 4.5rem);
+}
+
+.plate {
+  position: relative;
+}
+
+.plate-media {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius);
+  background: #0d0f12;
+  box-shadow: var(--shadow-1);
+  transition: box-shadow 520ms var(--ease), border-color 360ms ease;
+}
+
+.plate-media img {
+  transform: scale(1.001);
+  transition: transform 1100ms var(--ease), filter 700ms ease;
+}
+
+.plate:hover .plate-media,
+.plate:focus-within .plate-media {
+  box-shadow: var(--shadow-2);
+  border-color: rgba(19, 18, 16, 0.3);
+}
+
+.plate:hover .plate-media img,
+.plate:focus-within .plate-media img {
+  transform: scale(1.035);
+}
+
+/* sorot kursor di dalam gambar */
+.plate-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.16),
+    rgba(255, 255, 255, 0) 62%
+  );
+  opacity: 0;
+  transition: opacity 420ms ease;
+}
+
+.plate:hover .plate-media::after {
+  opacity: 1;
+}
+
+/* panel caption: solid dan rapi. Kaca di sini tidak akan terbaca karena
+   tidak ada isi di belakangnya — jadi glass dipindah ke .plate-tag di atas
+   screenshot, tempat blur-nya benar-benar terlihat. */
+.plate-caption {
+  position: relative;
+  margin: 0.85rem 0 0;
+  padding: clamp(0.9rem, 2vw, 1.15rem) 0 0;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--ink);
+  border-radius: 0;
+  box-shadow: none;
+  transition: transform 520ms var(--ease);
+}
+
+/* chip glass: benar-benar menumpuk di atas screenshot, jadi blur + bleed
+   warnanya kelihatan. Ini satu-satunya glass di dalam konten. */
+.plate-tag {
+  position: absolute;
+  left: clamp(0.6rem, 1.4vw, 1rem);
+  top: clamp(0.6rem, 1.4vw, 1rem);
+  z-index: 2;
+  margin: 0;
+  padding: 0.36rem 0.66rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  /* fill berlapis: gradien tipis + blur = kilau kaca yang benar-benar terlihat */
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04));
+  background-color: rgba(12, 14, 17, 0.34);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 2px;
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+    0 6px 18px -10px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  transition: background-color 420ms ease, border-color 420ms ease, box-shadow 420ms ease;
+}
+
+.plate:hover .plate-tag {
+  background-color: rgba(12, 14, 17, 0.46);
+  border-color: rgba(255, 255, 255, 0.44);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    0 8px 22px -10px rgba(0, 0, 0, 0.8);
+}
+
+.plate:hover .plate-caption,
+.plate:focus-within .plate-caption {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2);
+}
+
+.plate-copy h3 {
+  text-wrap: balance;
+}
+
+.plate-copy h3 a {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 480ms var(--ease), color 220ms ease;
+}
+
+.plate-copy h3 a:hover {
+  text-decoration: none;
+  background-size: 100% 1px;
+  color: var(--accent);
+}
+
+.plate-aside dl dt {
+  color: var(--muted);
+}
+
+/* ---------- 4. Index: panel solid, bukan glass (kontras dari kartu) ---------- */
+
+.index-block {
+  margin-top: clamp(2.5rem, 6vw, 4.5rem);
+  padding: clamp(1rem, 2.4vw, 1.75rem);
+  background: var(--paper-2);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+}
+
+.index-row {
+  border-bottom: 1px solid var(--rule);
+  transition: background-color 260ms ease, box-shadow 260ms ease, transform 320ms var(--ease);
+}
+
+.index-row:hover {
+  background: #fffdf9;
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.index-no {
+  transition: color 220ms ease;
+}
+
+.index-row:hover .index-no {
+  color: var(--accent);
+}
+
+.index-title a {
+  transition: color 200ms ease;
+}
+
+.index-row:hover .index-title a {
+  color: var(--accent);
+}
+
+/* ---------- 5. About / capabilities / record ---------- */
+
+.about-statement {
+  text-wrap: pretty;
+}
+
+.capabilities {
+  padding: clamp(1rem, 2.2vw, 1.5rem);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  box-shadow: var(--shadow-1);
+}
+
+.record-row {
+  transition: background-color 260ms ease, box-shadow 260ms ease;
+}
+
+.record-row:hover {
+  background: #fffdf9;
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.exp-item {
+  transition: box-shadow 300ms ease;
+}
+
+.exp-item:hover {
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+/* ---------- 6. Contact + footer ---------- */
+
+.section-contact .contact-block,
+.contact-block {
+  padding: clamp(1.2rem, 3vw, 2rem);
+  background: var(--paper-2);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+}
+
+.contact-email {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 2.6vw, 1.7rem);
+  letter-spacing: -0.02em;
+  border-bottom-width: 1px;
+  transition: color 220ms ease, background-size 420ms var(--ease);
+}
+
+.contact-email:hover {
+  color: var(--accent);
+}
+
+.site-footer {
+  border-top: 1px solid var(--hair);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* ---------- 7. Mobile menu: satu-satunya overlay glass penuh ---------- */
+
+.mobile-menu {
+  background: rgba(247, 246, 242, 0.72);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  backdrop-filter: blur(22px) saturate(160%);
+}
+
+.mobile-menu-inner a {
+  transition: color 200ms ease, transform 260ms var(--ease);
+}
+
+.mobile-menu-inner a:hover {
+  color: var(--accent);
+  transform: translateX(3px);
+}
+
+/* ---------- 8. Kontras teks kecil (lolos AA di atas krem/putih) ---------- */
+
+:root {
+  --muted: #4c473e; /* lebih gelap dari versi lama: label mono 10-11px butuh ini */
+}
+
+.plate-meta,
+.index-meta,
+.record-no,
+.index-no {
+  font-size: 0.72rem;
+  letter-spacing: 0.13em;
+}
+
+.plate-links a,
+.index-links a,
+.hero-links a,
+.contact-links a {
+  color: var(--ink);
+}
+
+.plate-links a:hover,
+.index-links a:hover,
+.hero-links a:hover,
+.contact-links a:hover {
+  color: var(--accent);
+}
+
+.hero-role {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+}
+
+/* =========================================================================
+   MOTION — reveal saat masuk viewport
+   Elemen ditandai [data-reveal] oleh src/motion.ts. Tanpa JS / tanpa
+   dukungan, konten tetap terlihat (progressive enhancement).
+   ========================================================================= */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* gambar terbuka dari tengah (clip) */
+[data-reveal="media"] {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(9% 0 9% 0);
+  transition: clip-path 1100ms var(--ease);
+}
+
+[data-reveal="media"].is-in {
+  clip-path: inset(0 0 0 0);
+}
+
+/* garis judul section menggambar dari kiri */
+.section-head {
+  position: relative;
+}
+
+.section-head::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 1px;
+  width: 100%;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 900ms var(--ease);
+}
+
+.section-head.is-in::before {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal="media"] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+
+  .section-head::before {
+    transform: scaleX(1) !important;
+  }
+
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- responsif ---------- */
+
+@media (max-width: 860px) {
+  .plate-caption {
+    margin-top: -1.6rem;
+    margin-inline: 0.5rem;
+  }
+
+  .hero-facts {
+    background: var(--paper-2);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}

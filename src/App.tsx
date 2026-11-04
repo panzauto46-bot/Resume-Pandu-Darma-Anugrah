@@ -473,12 +473,12 @@ export default function App() {
                       decoding="async"
                     />
                   </a>
-                  <div className="plate-caption">
-                    <div className="plate-copy">
-                      <p className="plate-meta mono">
-                        {formatIndex(position + 1)} / {project.category}
-                      </p>
-                      <h3>
+                  <p className="plate-tag mono" aria-hidden="true">
+                                      {formatIndex(position + 1)} / {project.category}
+                                    </p>
+                                    <div className="plate-caption">
+                                      <div className="plate-copy">
+                                        <h3>
                         <a href={project.link} target="_blank" rel="noreferrer">
                           {project.title}
                           <span aria-hidden="true"> ↗</span>
