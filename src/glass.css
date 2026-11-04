@@ -74,9 +74,9 @@ body {
 }
 
 .site-header.is-stuck {
-  background: rgba(255, 255, 255, 0.62);
-  border-bottom-color: var(--hair);
-  box-shadow: 0 18px 40px -38px rgba(19, 18, 16, 0.6);
+  background: rgba(255, 255, 255, 0.7);
+  border-bottom-color: rgba(19, 18, 16, 0.18);
+  box-shadow: 0 1px 0 rgba(19, 18, 16, 0.06), 0 20px 44px -40px rgba(19, 18, 16, 0.7);
 }
 
 .header-inner {
@@ -252,7 +252,7 @@ body {
    screenshot, tempat blur-nya benar-benar terlihat. */
 .plate-caption {
   position: relative;
-  margin: 0.85rem 0 0;
+  margin: 1.15rem 0 0;
   padding: clamp(0.9rem, 2vw, 1.15rem) 0 0;
   background: transparent;
   border: 0;
@@ -266,8 +266,10 @@ body {
    warnanya kelihatan. Ini satu-satunya glass di dalam konten. */
 .plate-tag {
   position: absolute;
+  /* di kiri BAWAH: tidak pernah tertutup header sticky, dan tidak bertabrakan
+     dengan tab/toolbar milik screenshot di bagian atas */
   left: clamp(0.6rem, 1.4vw, 1rem);
-  top: clamp(0.6rem, 1.4vw, 1rem);
+  bottom: clamp(0.6rem, 1.4vw, 1rem);
   z-index: 2;
   margin: 0;
   padding: 0.36rem 0.66rem;
@@ -439,6 +441,15 @@ body {
 .mobile-menu-inner a:hover {
   color: var(--accent);
   transform: translateX(3px);
+}
+
+/* anchor tidak boleh berakhir di bawah header sticky */
+section[id],
+[id="work"],
+[id="about"],
+[id="record"],
+[id="contact"] {
+  scroll-margin-top: calc(var(--header-h) + 16px);
 }
 
 /* ---------- 8. Kontras teks kecil (lolos AA di atas krem/putih) ---------- */
