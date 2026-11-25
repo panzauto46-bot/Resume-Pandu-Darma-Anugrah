@@ -3,7 +3,7 @@
  *
  * Sengaja kecil dan idempoten: React StrictMode memanggil effect dua kali,
  * jadi setiap pemasangan dijaga oleh flag dan listener yang sudah ada
- * dibersihkan lewat AbortController.
+ * dibersihkan.
  *
  * Menghormati prefers-reduced-motion: kalau user minta minim gerak,
  * semua efek dimatikan dan konten langsung dalam keadaan akhir.
@@ -21,13 +21,12 @@ const cleanups: Cleanup[] = [];
 /** Tandai elemen untuk reveal, berurutan sesuai urutan DOM di dalam induknya. */
 function markReveals(root: ParentNode) {
   const groups = root.querySelectorAll<HTMLElement>(
-    ".hero > .container, .section > .container, .plate, .index-row, .record-row, .exp-item",
+    ".hero > .container, .section > .container, .plate, .record-row, .exp-item",
   );
 
   groups.forEach((el, i) => {
     if (el.hasAttribute("data-reveal")) return;
 
-    // media punya animasi clip sendiri; sisanya fade + rise
     if (el.classList.contains("plate")) {
       const media = el.querySelector<HTMLElement>(".plate-media");
       const caption = el.querySelector<HTMLElement>(".plate-caption");
@@ -37,7 +36,7 @@ function markReveals(root: ParentNode) {
     }
 
     el.setAttribute("data-reveal", "");
-    el.style.setProperty("--reveal-delay", `${Math.min(i % 4, 3) * 70}ms`);
+    el.style.setProperty("--reveal-delay", `${Math.min(i % 4, 3) * 65}ms`);
   });
 
   root.querySelectorAll<HTMLElement>(".section-head").forEach((el) => {
@@ -167,10 +166,6 @@ function mountMagnetic(): Cleanup {
     });
 }
 
-/**
- * Pasang semua motion. Panggil sekali setelah render; pemanggilan berikutnya
- * tidak menghasilkan duplikat.
- */
 export function initMotion() {
   if (typeof window === "undefined" || installed) return () => {};
   installed = true;
@@ -195,15 +190,12 @@ export function initMotion() {
   );
   observeReveals(io);
 
-  // Jaring aman: kalau ada elemen di dalam viewport yang belum ter-reveal
-  // (observer telat, layout bergeser), tampilkan setelah 1.4s. Konten tidak
-  // boleh pernah tertinggal tak terlihat.
   const sweep = window.setTimeout(() => {
     document.querySelectorAll<HTMLElement>("[data-reveal]:not(.is-in)").forEach((el) => {
       const r = el.getBoundingClientRect();
       if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("is-in");
     });
-  }, 1400);
+  }, 1200);
 
   cleanups.push(
     () => io.disconnect(),
